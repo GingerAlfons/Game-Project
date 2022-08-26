@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask ground;
     public float jumpStrength = 15f;
     public Vector2 boxSize = new Vector2(1f, 1f);
-    public Vector3 offset = new Vector3(1f, 0f, 0f);
+    public Vector3 offset = new Vector3(0f, 0f, 0f);
 
     void Start()
     {
@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        bool grounded = Physics2D.OverlapBox(transform.position + offset, boxSize, 0f);
+        bool grounded = Physics2D.OverlapBox(transform.position + offset, boxSize, 0f, ground);
         rb.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, rb.velocity.y);
 
         if (grounded && Input.GetButtonDown("Jump"))
@@ -30,5 +30,10 @@ public class PlayerMovement : MonoBehaviour
     public void Jump()
     {
         rb.velocity = new Vector2(rb.velocity.x, jumpStrength);
+    }
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireCube(transform.position + offset, boxSize);
     }
 }
