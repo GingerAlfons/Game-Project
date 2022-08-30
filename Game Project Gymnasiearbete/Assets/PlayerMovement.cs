@@ -6,6 +6,10 @@ public class PlayerMovement : MonoBehaviour
 {
     public Rigidbody2D rb;
     public float speed = 2f;
+    public KeyCode JumpButton;
+    public KeyCode LeftButton;
+    public KeyCode RightButton;
+    float HorizontalInput = 0f;
 
     [Header("Jump")]
     public LayerMask ground;
@@ -20,10 +24,22 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKey(RightButton))
+        {
+            HorizontalInput = 1f;
+        }
+        else if (Input.GetKey(LeftButton))
+        {
+            HorizontalInput = -1f;
+        }
+        else
+        {
+            HorizontalInput = 0f;
+        }
         bool grounded = Physics2D.OverlapBox(transform.position + offset, boxSize, 0f, ground);
-        rb.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, rb.velocity.y);
+        rb.velocity = new Vector2(HorizontalInput * speed, rb.velocity.y);
 
-        if (grounded && Input.GetButtonDown("Jump"))
+        if (grounded && Input.GetKeyDown(JumpButton))
             Jump();
     }
 
