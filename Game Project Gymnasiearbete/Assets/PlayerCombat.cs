@@ -10,6 +10,8 @@ public class PlayerCombat : MonoBehaviour
 
     [SerializeField] float damageInterval = .1f;
     float dmgTimer;
+    [SerializeField] int damageAmount = 5;
+
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +23,9 @@ public class PlayerCombat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.Instance.startTimer > 0f)
+            return; 
+
         if (!spriteRenderer.isVisible)
         {
             if (dmgTimer > 0)
@@ -28,7 +33,7 @@ public class PlayerCombat : MonoBehaviour
             else
             {
                 dmgTimer = damageInterval;
-                Damage(1);
+                Damage(damageAmount);
             }
         }
     }

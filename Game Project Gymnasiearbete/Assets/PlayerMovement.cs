@@ -24,6 +24,9 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.Instance.startTimer > 0f)
+            return;
+
         if (Input.GetKey(RightButton))
         {
             HorizontalInput = 1f;
