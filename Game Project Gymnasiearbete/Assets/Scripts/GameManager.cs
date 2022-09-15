@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
 
     public void RoundStart()
     {
-        startTimer = 3f;
+        startTimer = 0f;
     }
 
     private void Update()

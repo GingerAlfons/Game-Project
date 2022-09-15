@@ -24,16 +24,20 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        
         if (GameManager.Instance.startTimer > 0f)
             return;
 
         if (Input.GetKey(RightButton))
         {
             HorizontalInput = 1f;
+            spriteRenderer.flipX = true;
         }
         else if (Input.GetKey(LeftButton))
         {
             HorizontalInput = -1f;
+            spriteRenderer.flipX = false;
         }
         else
         {
@@ -44,6 +48,9 @@ public class PlayerMovement : MonoBehaviour
 
         if (grounded && Input.GetKeyDown(JumpButton))
             Jump();
+
+        //Flippar spriten beroende på vilket håll man kollar åt
+
     }
 
     public void Jump()
