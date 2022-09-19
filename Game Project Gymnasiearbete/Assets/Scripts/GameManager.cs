@@ -23,11 +23,14 @@ public class GameManager : MonoBehaviour
 
     public void RoundStart()
     {
-        startTimer = 0f;
+        startTimer = 3f;
     }
 
     private void Update()
     {
-        
+        if (startTimer > 0)
+        {
+            startTimer -= Time.deltaTime;
+        }
     }
 }
