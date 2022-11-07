@@ -46,7 +46,24 @@ public class PlayerCombat : MonoBehaviour
             Kill();
     }
 
-    
+    public void StartAttack()
+    {
+        StartCoroutine(Attack());
+    }
+
+    IEnumerator Attack()
+    {
+        yield return new WaitForSeconds(1f);
+
+        AttackBox();
+
+        yield return new WaitForSeconds(1f);
+    }
+
+    void AttackBox()
+    {
+
+    }
 
     public void Kill()
     {
