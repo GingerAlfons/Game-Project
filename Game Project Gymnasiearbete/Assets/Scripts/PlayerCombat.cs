@@ -46,6 +46,8 @@ public class PlayerCombat : MonoBehaviour
             Kill();
     }
 
+    
+
     public void Kill()
     {
         gameObject.SetActive(false);
