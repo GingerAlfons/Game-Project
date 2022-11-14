@@ -154,13 +154,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 9169711065640842812}
+  cc: {fileID: 0}
   speed: 18
   JumpButton: 119
   LeftButton: 0
   RightButton: 0
+  DuckButton: 0
   ground:
     serializedVersion: 2
     m_Bits: 8
   jumpStrength: 35
-  boxSize: {x: 0.8, y: 1}
+  doubleJump: 0
+  boxSize: {x: 1, y: 0.2}
   offset: {x: 0, y: -1.5, z: 0}

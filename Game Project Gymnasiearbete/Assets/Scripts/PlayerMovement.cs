@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Jump")]
     public LayerMask ground;
     public float jumpStrength = 15f;
-    public float dubbleJump;
+    public int doubleJump;
     public Vector2 boxSize = new Vector2(1f, 1f);
     public Vector3 offset = new Vector3(0f, 0f, 0f);
 
@@ -28,7 +28,6 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-        
         if (GameManager.Instance.startTimer > 0f)
             return;
 
@@ -50,21 +49,23 @@ public class PlayerMovement : MonoBehaviour
         bool grounded = Physics2D.OverlapBox(transform.position + offset, boxSize, 0f, ground);
         rb.velocity = new Vector2(HorizontalInput * speed, rb.velocity.y);
 
-        if (grounded)
+        if (grounded && rb.velocity.y <= 0)
         {
-            dubbleJump = 2f;
+            doubleJump = 2;
         }
 
-        if (dubbleJump > 0 && Input.GetKeyDown(JumpButton))
+        if (doubleJump > 0 && Input.GetKeyDown(JumpButton))
         {
+            Debug.Log(doubleJump);
             Jump();
         }
     }
+    
 
     public void Jump()
     {
         rb.velocity = new Vector2(rb.velocity.x, jumpStrength);
-        dubbleJump--;
+        doubleJump--;
     }
     private void OnDrawGizmosSelected()
     {
