@@ -31,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
         if (GameManager.Instance.startTimer > 0f)
             return;
 
+        //Kollar spelarens riktning och vänder prefaben därefter
         if (Input.GetKey(RightButton))
         {
             HorizontalInput = 1f;
