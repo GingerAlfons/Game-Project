@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public Animator animator;
+
     public Rigidbody2D rb;
     public CapsuleCollider2D cc;
     public float speed = 2f;
@@ -27,6 +29,17 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        //Animation
+        if (HorizontalInput != 0)
+        {
+            animator.SetBool("isWalking", true);
+        }
+        else
+        {
+            animator.SetBool("isWalking", false);
+        }
+
+
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
         if (GameManager.Instance.startTimer > 0f)
             return;
@@ -35,12 +48,12 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(RightButton))
         {
             HorizontalInput = 1f;
-            spriteRenderer.flipX = true;
+            spriteRenderer.flipX = false;
         }
         else if (Input.GetKey(LeftButton))
         {
             HorizontalInput = -1f;
-            spriteRenderer.flipX = false;
+            spriteRenderer.flipX = true;
         }
         else
         {
