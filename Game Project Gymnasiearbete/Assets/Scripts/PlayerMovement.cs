@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     public KeyCode DuckButton;
     float HorizontalInput = 0f;
 
+    //Värden för hopp-variabler
     [Header("Jump")]
     public LayerMask ground;
     public float jumpStrength = 15f;
@@ -22,9 +23,15 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 boxSize = new Vector2(1f, 1f);
     public Vector3 offset = new Vector3(0f, 0f, 0f);
 
+    //Värden för duck-variabler
+    [Header("Duck")]
+    public Vector2 ccDefaultSize = new Vector2(1f, 1f);
+    public Vector2 ccDefaultOffset = new Vector3(0f, 0f);
+    public Vector2 ccDuckSize = new Vector2(1f, 1f);
+    public Vector2 ccDuckOffset = new Vector3(0f, 0f);
+
     void Start()
     {
-
     }
 
     void Update()
@@ -40,11 +47,11 @@ public class PlayerMovement : MonoBehaviour
         }
 
 
-        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
         if (GameManager.Instance.startTimer > 0f)
             return;
 
         //Kollar spelarens riktning och vänder prefaben därefter
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
         if (Input.GetKey(RightButton))
         {
             HorizontalInput = 1f;
@@ -59,10 +66,11 @@ public class PlayerMovement : MonoBehaviour
         {
             HorizontalInput = 0f;
         }
-     
-        bool grounded = Physics2D.OverlapBox(transform.position + offset, boxSize, 0f, ground);
         rb.velocity = new Vector2(HorizontalInput * speed, rb.velocity.y);
+     
 
+        //Kollar om spelaren nuddar marken och om den har tillåtelse att hoppa
+        bool grounded = Physics2D.OverlapBox(transform.position + offset, boxSize, 0f, ground);
         if (grounded && rb.velocity.y <= 0)
         {
             doubleJump = 2;
@@ -70,8 +78,18 @@ public class PlayerMovement : MonoBehaviour
 
         if (doubleJump > 0 && Input.GetKeyDown(JumpButton))
         {
-            Debug.Log(doubleJump);
             Jump();
+        }
+
+        //Ducka
+        CapsuleCollider2D capsuleCollider2D = gameObject.GetComponent<CapsuleCollider2D>();
+        if (Input.GetKey(DuckButton))
+        {
+            Duck(capsuleCollider2D);
+        }
+        else
+        {
+            Stand(capsuleCollider2D);
         }
     }
     
@@ -81,14 +99,21 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = new Vector2(rb.velocity.x, jumpStrength);
         doubleJump--;
     }
+    public void Duck(CapsuleCollider2D capsuleCollider2D)
+    {
+        capsuleCollider2D.size = ccDuckSize;
+        capsuleCollider2D.offset = ccDuckOffset;
+    }
+    public void Stand(CapsuleCollider2D capsuleCollider2D)
+    {
+        capsuleCollider2D.size = ccDefaultSize;
+        capsuleCollider2D.offset = ccDefaultOffset;
+    }
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.blue;
         Gizmos.DrawWireCube(transform.position + offset, boxSize);
     }
 
-    private void Duck()
-    {
-
-    }
 }
