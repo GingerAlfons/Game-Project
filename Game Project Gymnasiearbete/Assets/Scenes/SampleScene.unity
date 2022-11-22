@@ -791,10 +791,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1964559404}
     - target: {fileID: 9169711065640842786, guid: 2793b2dc292f1ef4498d4d33bb4f76fb, type: 3}
-      propertyPath: offset.y
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9169711065640842786, guid: 2793b2dc292f1ef4498d4d33bb4f76fb, type: 3}
       propertyPath: DuckButton
       value: 274
       objectReference: {fileID: 0}
@@ -837,14 +833,6 @@ PrefabInstance:
     - target: {fileID: 9169711065640842809, guid: 2793b2dc292f1ef4498d4d33bb4f76fb, type: 3}
       propertyPath: attackBoxOffset.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 9169711065640842813, guid: 2793b2dc292f1ef4498d4d33bb4f76fb, type: 3}
-      propertyPath: m_Size.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 9169711065640842813, guid: 2793b2dc292f1ef4498d4d33bb4f76fb, type: 3}
-      propertyPath: m_Size.y
-      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 9169711065640842814, guid: 2793b2dc292f1ef4498d4d33bb4f76fb, type: 3}
       propertyPath: m_RootOrder
@@ -965,20 +953,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 432812155}
     - target: {fileID: 9169711065640842786, guid: 2793b2dc292f1ef4498d4d33bb4f76fb, type: 3}
-      propertyPath: offset.y
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9169711065640842786, guid: 2793b2dc292f1ef4498d4d33bb4f76fb, type: 3}
       propertyPath: DuckButton
       value: 115
       objectReference: {fileID: 0}
     - target: {fileID: 9169711065640842786, guid: 2793b2dc292f1ef4498d4d33bb4f76fb, type: 3}
-      propertyPath: LeftButton
-      value: 97
+      propertyPath: JumpButton
+      value: 119
       objectReference: {fileID: 0}
     - target: {fileID: 9169711065640842786, guid: 2793b2dc292f1ef4498d4d33bb4f76fb, type: 3}
-      propertyPath: doubleJump
-      value: 0
+      propertyPath: LeftButton
+      value: 97
       objectReference: {fileID: 0}
     - target: {fileID: 9169711065640842786, guid: 2793b2dc292f1ef4498d4d33bb4f76fb, type: 3}
       propertyPath: RightButton
@@ -1016,13 +1000,9 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 6200000, guid: 929c9702abbaff64c993cb055da2c438, type: 2}
-    - target: {fileID: 9169711065640842813, guid: 2793b2dc292f1ef4498d4d33bb4f76fb, type: 3}
-      propertyPath: m_Size.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 9169711065640842813, guid: 2793b2dc292f1ef4498d4d33bb4f76fb, type: 3}
-      propertyPath: m_Size.y
-      value: 4
+    - target: {fileID: 9169711065640842812, guid: 2793b2dc292f1ef4498d4d33bb4f76fb, type: 3}
+      propertyPath: m_LinearDrag
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9169711065640842814, guid: 2793b2dc292f1ef4498d4d33bb4f76fb, type: 3}
       propertyPath: m_RootOrder

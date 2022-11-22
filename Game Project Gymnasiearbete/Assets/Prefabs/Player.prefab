@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 9169711065640842814}
   - component: {fileID: 9169711065640842815}
-  - component: {fileID: 9169711065640842809}
   - component: {fileID: 9169711065640842812}
   - component: {fileID: 9169711065640842813}
   - component: {fileID: 9169711065640842786}
+  - component: {fileID: 9169711065640842809}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -88,27 +88,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &9169711065640842809
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9169711065640842787}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c20519026584e640a4fdafd305a9ca5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  health: 0
-  damageInterval: 0.25
-  damageAmount: 5
-  LeftMouseButton: 0
-  LeftButton: 0
-  RightButton: 0
-  attackBoxSize: {x: 1, y: 1}
-  attackBoxOffset: {x: 0, y: 0.5, z: 0}
 --- !u!50 &9169711065640842812
 Rigidbody2D:
   serializedVersion: 4
@@ -144,7 +123,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 2, y: 4}
   m_Direction: 0
 --- !u!114 &9169711065640842786
 MonoBehaviour:
@@ -159,10 +138,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
+  cc: {fileID: 9169711065640842813}
   rb: {fileID: 9169711065640842812}
-  cc: {fileID: 0}
+  sr: {fileID: 9169711065640842815}
   speed: 18
-  JumpButton: 119
+  JumpButton: 0
   LeftButton: 0
   RightButton: 0
   DuckButton: 0
@@ -172,8 +152,29 @@ MonoBehaviour:
   jumpStrength: 35
   doubleJump: 0
   boxSize: {x: 1, y: 0.2}
-  offset: {x: 0, y: -1.5, z: 0}
+  offset: {x: 0, y: -1, z: 0}
   ccDefaultSize: {x: 2, y: 4}
   ccDefaultOffset: {x: 0, y: 0}
   ccDuckSize: {x: 2, y: 2}
   ccDuckOffset: {x: 0, y: -1}
+--- !u!114 &9169711065640842809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9169711065640842787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c20519026584e640a4fdafd305a9ca5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  health: 0
+  damageInterval: 0.25
+  damageAmount: 5
+  LeftMouseButton: 0
+  LeftButton: 0
+  RightButton: 0
+  attackBoxSize: {x: 1, y: 1}
+  attackBoxOffset: {x: 0, y: 0.5, z: 0}

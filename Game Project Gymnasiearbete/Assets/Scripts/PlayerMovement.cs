@@ -5,9 +5,10 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public Animator animator;
-
-    public Rigidbody2D rb;
     public CapsuleCollider2D cc;
+    public Rigidbody2D rb;
+    public SpriteRenderer sr;
+
     public float speed = 2f;
     public KeyCode JumpButton;
     public KeyCode LeftButton;
@@ -51,16 +52,15 @@ public class PlayerMovement : MonoBehaviour
             return;
 
         //Kollar spelarens riktning och vänder prefaben därefter
-        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
         if (Input.GetKey(RightButton))
         {
             HorizontalInput = 1f;
-            spriteRenderer.flipX = false;
+            sr.flipX = false;
         }
         else if (Input.GetKey(LeftButton))
         {
             HorizontalInput = -1f;
-            spriteRenderer.flipX = true;
+            sr.flipX = true;
         }
         else
         {
@@ -82,14 +82,13 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //Ducka
-        CapsuleCollider2D capsuleCollider2D = gameObject.GetComponent<CapsuleCollider2D>();
         if (Input.GetKey(DuckButton))
         {
-            Duck(capsuleCollider2D);
+            Duck(cc);
         }
         else
         {
-            Stand(capsuleCollider2D);
+            Stand(cc);
         }
     }
     
