@@ -820,7 +820,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9169711065640842809, guid: 2793b2dc292f1ef4498d4d33bb4f76fb, type: 3}
       propertyPath: LeftMouseButton
-      value: 324
+      value: 256
       objectReference: {fileID: 0}
     - target: {fileID: 9169711065640842809, guid: 2793b2dc292f1ef4498d4d33bb4f76fb, type: 3}
       propertyPath: attackBoxSize.y
@@ -986,7 +986,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9169711065640842809, guid: 2793b2dc292f1ef4498d4d33bb4f76fb, type: 3}
       propertyPath: LeftMouseButton
-      value: 324
+      value: 102
       objectReference: {fileID: 0}
     - target: {fileID: 9169711065640842809, guid: 2793b2dc292f1ef4498d4d33bb4f76fb, type: 3}
       propertyPath: attackBoxSize.y

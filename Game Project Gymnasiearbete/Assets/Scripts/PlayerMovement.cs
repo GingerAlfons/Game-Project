@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     public KeyCode RightButton;
     public KeyCode DuckButton;
     float HorizontalInput = 0f;
+    public bool isDucking;
 
     //Värden för hopp-variabler
     [Header("Jump")]
@@ -85,10 +86,12 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(DuckButton))
         {
             Duck(cc);
+            isDucking = true;
         }
         else
         {
             Stand(cc);
+            isDucking = false;
         }
     }
     

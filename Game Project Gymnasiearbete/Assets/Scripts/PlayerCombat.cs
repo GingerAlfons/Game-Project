@@ -19,6 +19,8 @@ public class PlayerCombat : MonoBehaviour
     public Vector3 attackBoxOffset = new Vector3(0f, 0.5f, 0f);
     float HorizontalInput = 0f;
 
+    [SerializeField] public LayerMask player;
+
 
     // Start is called before the first frame update
     void Start()
@@ -90,7 +92,21 @@ public class PlayerCombat : MonoBehaviour
 
     void AttackBox()
     {
-        
+        Collider2D[] cda = Physics2D.OverlapBoxAll(transform.position + attackBoxOffset, attackBoxSize, 0f, player);
+        for (int i = 0; i < cda.Length; i++)
+        {
+            if (cda[i].gameObject == gameObject)
+            {
+                continue;
+            }    
+
+            PlayerCombat pc = cda[i].GetComponent<PlayerCombat>();
+            if (pc)
+            {
+                Debug.Log("YEAH DET FUNKAR!!!!");
+                pc.Damage(damageAmount);      
+            }
+        }
     }
 
     private void OnDrawGizmosSelected()
