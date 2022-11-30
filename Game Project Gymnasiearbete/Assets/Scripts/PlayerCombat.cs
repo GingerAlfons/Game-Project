@@ -12,12 +12,13 @@ public class PlayerCombat : MonoBehaviour
     float dmgTimer;
     [SerializeField] int damageAmount = 5;
 
-    public KeyCode LeftMouseButton;
+    public KeyCode AttackButton;
     public KeyCode LeftButton;
     public KeyCode RightButton;
     public Vector2 attackBoxSize = new Vector2(1f, 1f);
     public Vector3 attackBoxOffset = new Vector3(0f, 0.5f, 0f);
     float HorizontalInput = 0f;
+    bool isAttacking = false;
 
     [SerializeField] public LayerMask player;
 
@@ -49,7 +50,7 @@ public class PlayerCombat : MonoBehaviour
         }
 
         //Kollar om spelaren vill attackera
-        if (Input.GetKey(LeftMouseButton))
+        if (Input.GetKeyDown(AttackButton))
         {
             StartAttack();
         }
@@ -78,16 +79,21 @@ public class PlayerCombat : MonoBehaviour
 
     public void StartAttack()
     {
-        StartCoroutine(Attack());
+        if (isAttacking == false)
+        {
+            StartCoroutine(Attack());
+        }
     }
 
     IEnumerator Attack()
     {
+        isAttacking = true;
         yield return new WaitForSeconds(1f);
 
         AttackBox();
 
         yield return new WaitForSeconds(1f);
+        isAttacking = false;
     }
 
     void AttackBox()
