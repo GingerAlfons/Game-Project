@@ -8,7 +8,7 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] int maxHealth = 100;
     [SerializeField] int health;
 
-    [SerializeField] float damageInterval = .1f;
+    [SerializeField] float damageInterval = 1f;
     float dmgTimer;
     [SerializeField] int damageAmount = 5;
 
@@ -88,7 +88,7 @@ public class PlayerCombat : MonoBehaviour
     IEnumerator Attack()
     {
         isAttacking = true;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0f);
 
         AttackBox();
 
@@ -96,7 +96,7 @@ public class PlayerCombat : MonoBehaviour
         isAttacking = false;
     }
 
-    void AttackBox()
+    public void AttackBox()
     {
         Collider2D[] cda = Physics2D.OverlapBoxAll(transform.position + attackBoxOffset, attackBoxSize, 0f, player);
         for (int i = 0; i < cda.Length; i++)
@@ -109,10 +109,22 @@ public class PlayerCombat : MonoBehaviour
             PlayerCombat pc = cda[i].GetComponent<PlayerCombat>();
             if (pc)
             {
-                Debug.Log("YEAH DET FUNKAR!!!!");
-                pc.Damage(damageAmount);      
+                Debug.Log(cda[i].gameObject.name);
+
+                /*Targeted Player, Weapon*/
+                Knockback(cda[i].gameObject); 
             }
         }
+    }
+
+    public void Knockback(GameObject enemy)
+    {
+        Rigidbody2D rb = enemy.GetComponent<Rigidbody2D>();
+        
+        Vector2 angle = new Vector2(enemy.transform.position.x - transform.position.x, enemy.transform.position.y - transform.position.y).normalized;
+        Debug.Log(angle.x);
+        
+        rb.AddForce(angle * 1000f, ForceMode2D.Force);
     }
 
     private void OnDrawGizmosSelected()

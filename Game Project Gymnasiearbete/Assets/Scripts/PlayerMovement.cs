@@ -68,7 +68,6 @@ public class PlayerMovement : MonoBehaviour
             HorizontalInput = 0f;
         }
         rb.velocity = new Vector2(HorizontalInput * speed, rb.velocity.y);
-     
 
         //Kollar om spelaren nuddar marken och om den har tillåtelse att hoppa
         bool grounded = Physics2D.OverlapBox(transform.position + offset, boxSize, 0f, ground);
