@@ -101,7 +101,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 10
   m_Material: {fileID: 0}
@@ -141,11 +141,12 @@ MonoBehaviour:
   cc: {fileID: 9169711065640842813}
   rb: {fileID: 9169711065640842812}
   sr: {fileID: 9169711065640842815}
-  speed: 18
   JumpButton: 0
   LeftButton: 0
   RightButton: 0
   DuckButton: 0
+  accForce: 10
+  maxSpeed: 15
   isDucking: 0
   ground:
     serializedVersion: 2
@@ -174,7 +175,7 @@ MonoBehaviour:
   health: 0
   damageInterval: 0.25
   damageAmount: 5
-  LeftMouseButton: 0
+  AttackButton: 0
   LeftButton: 0
   RightButton: 0
   attackBoxSize: {x: 1, y: 1}

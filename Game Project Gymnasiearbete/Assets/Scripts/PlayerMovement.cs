@@ -9,12 +9,14 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     public SpriteRenderer sr;
 
-    public float speed = 2f;
+    [Header("Movement")]
     public KeyCode JumpButton;
     public KeyCode LeftButton;
     public KeyCode RightButton;
     public KeyCode DuckButton;
     float HorizontalInput = 0f;
+    public float accForce = 0f;
+    public float maxSpeed = 0f;
     public bool isDucking;
 
     //Värden för hopp-variabler
@@ -38,20 +40,6 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        //Animation
-        if (HorizontalInput != 0)
-        {
-            animator.SetBool("isWalking", true);
-        }
-        else
-        {
-            animator.SetBool("isWalking", false);
-        }
-
-
-        if (GameManager.Instance.startTimer > 0f)
-            return;
-
         //Kollar spelarens riktning och vänder prefaben därefter
         if (Input.GetKey(RightButton))
         {
@@ -67,7 +55,25 @@ public class PlayerMovement : MonoBehaviour
         {
             HorizontalInput = 0f;
         }
-        rb.velocity = new Vector2(HorizontalInput * speed, rb.velocity.y);
+        if (Mathf.Abs(rb.velocity.x) <= maxSpeed)
+        {
+        Walk();
+        }
+
+        //Animation
+        if (HorizontalInput != 0)
+        {
+            animator.SetBool("isWalking", true);
+        }
+        else
+        {
+            animator.SetBool("isWalking", false);
+        }
+
+
+        if (GameManager.Instance.startTimer > 0f)
+            return;
+
 
         //Kollar om spelaren nuddar marken och om den har tillåtelse att hoppa
         bool grounded = Physics2D.OverlapBox(transform.position + offset, boxSize, 0f, ground);
@@ -95,6 +101,11 @@ public class PlayerMovement : MonoBehaviour
     }
     
 
+    public void Walk()
+    {
+        Vector2 walkDir = new Vector2(HorizontalInput * accForce, 0f);
+        rb.AddForce(walkDir, ForceMode2D.Force);
+    }
     public void Jump()
     {
         rb.velocity = new Vector2(rb.velocity.x, jumpStrength);
