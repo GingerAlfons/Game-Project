@@ -145,8 +145,8 @@ MonoBehaviour:
   LeftButton: 0
   RightButton: 0
   DuckButton: 0
-  accForce: 100
-  maxSpeed: 15
+  accForce: 200
+  maxSpeed: 20
   isDucking: 0
   ground:
     serializedVersion: 2
@@ -178,7 +178,7 @@ MonoBehaviour:
   AttackButton: 0
   LeftButton: 0
   RightButton: 0
-  attackBoxSize: {x: 1, y: 1}
+  attackBoxSize: {x: 2, y: 1}
   attackBoxOffset: {x: 0, y: 0.5, z: 0}
   player:
     serializedVersion: 2

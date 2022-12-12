@@ -877,18 +877,6 @@ PrefabInstance:
       propertyPath: LeftMouseButton
       value: 256
       objectReference: {fileID: 0}
-    - target: {fileID: 9169711065640842809, guid: 2793b2dc292f1ef4498d4d33bb4f76fb, type: 3}
-      propertyPath: attackBoxSize.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9169711065640842809, guid: 2793b2dc292f1ef4498d4d33bb4f76fb, type: 3}
-      propertyPath: attackBoxOffset.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9169711065640842809, guid: 2793b2dc292f1ef4498d4d33bb4f76fb, type: 3}
-      propertyPath: attackBoxOffset.y
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 9169711065640842814, guid: 2793b2dc292f1ef4498d4d33bb4f76fb, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -1054,14 +1042,6 @@ PrefabInstance:
     - target: {fileID: 9169711065640842809, guid: 2793b2dc292f1ef4498d4d33bb4f76fb, type: 3}
       propertyPath: LeftMouseButton
       value: 102
-      objectReference: {fileID: 0}
-    - target: {fileID: 9169711065640842809, guid: 2793b2dc292f1ef4498d4d33bb4f76fb, type: 3}
-      propertyPath: attackBoxSize.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9169711065640842809, guid: 2793b2dc292f1ef4498d4d33bb4f76fb, type: 3}
-      propertyPath: attackBoxOffset.y
-      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 9169711065640842812, guid: 2793b2dc292f1ef4498d4d33bb4f76fb, type: 3}
       propertyPath: m_Material

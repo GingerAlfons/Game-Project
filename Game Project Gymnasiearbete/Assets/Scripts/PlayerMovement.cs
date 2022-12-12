@@ -38,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
     {
     }
 
-    void Update()
+    private void FixedUpdate()
     {
         //Kollar spelarens riktning och vänder prefaben därefter
         if (Input.GetKey(RightButton))
@@ -57,8 +57,31 @@ public class PlayerMovement : MonoBehaviour
         }
         if (Mathf.Abs(rb.velocity.x) <= maxSpeed)
         {
-        Walk();
+            Walk();
         }
+    }
+
+    void Update()
+    {
+        ////Kollar spelarens riktning och vänder prefaben därefter
+        //if (Input.GetKey(RightButton))
+        //{
+        //    HorizontalInput = 1f;
+        //    sr.flipX = false;
+        //}
+        //else if (Input.GetKey(LeftButton))
+        //{
+        //    HorizontalInput = -1f;
+        //    sr.flipX = true;
+        //}
+        //else
+        //{
+        //    HorizontalInput = 0f;
+        //}
+        //if (Mathf.Abs(rb.velocity.x) <= maxSpeed)
+        //{
+        //Walk();
+        //}
 
         //Animation
         if (HorizontalInput != 0)

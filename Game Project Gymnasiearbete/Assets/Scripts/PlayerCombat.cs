@@ -15,8 +15,8 @@ public class PlayerCombat : MonoBehaviour
     public KeyCode AttackButton;
     public KeyCode LeftButton;
     public KeyCode RightButton;
-    public Vector2 attackBoxSize = new Vector2(1f, 1f);
-    public Vector3 attackBoxOffset = new Vector3(0f, 0.5f, 0f);
+    public Vector2 attackBoxSize = new Vector2(2f, 1f);
+    public Vector3 attackBoxOffset = new Vector3(0f, 1f, 0f);
     float HorizontalInput = 0f;
     bool isAttacking = false;
 
@@ -59,12 +59,12 @@ public class PlayerCombat : MonoBehaviour
         if (Input.GetKey(RightButton))
         {
             HorizontalInput = 1f;
-            attackBoxOffset = new Vector3(1f, 0.5f, 0f);
+            attackBoxOffset.x = 1;
         }
         else if (Input.GetKey(LeftButton))
         {
             HorizontalInput = -1f;
-            attackBoxOffset = new Vector3(-1f, 0.5f, 0f);
+            attackBoxOffset.x = -1;
         }
     }
 
@@ -112,19 +112,19 @@ public class PlayerCombat : MonoBehaviour
                 Debug.Log(cda[i].gameObject.name);
 
                 /*Targeted Player, Weapon*/
-                Knockback(cda[i].gameObject); 
+                Knockback(cda[i].gameObject, 2500f); 
             }
         }
     }
 
-    public void Knockback(GameObject enemy)
+    public void Knockback(GameObject enemy, float knockbackForce)
     {
         Rigidbody2D rb = enemy.GetComponent<Rigidbody2D>();
         
         Vector2 angle = new Vector2(enemy.transform.position.x - transform.position.x, enemy.transform.position.y - transform.position.y).normalized;
         Debug.Log(angle.x);
         
-        rb.AddForce(angle * 1000f, ForceMode2D.Force);
+        rb.AddForce(angle * knockbackForce, ForceMode2D.Force);
     }
 
     private void OnDrawGizmosSelected()
