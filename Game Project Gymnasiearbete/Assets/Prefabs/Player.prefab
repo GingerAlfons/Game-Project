@@ -145,7 +145,7 @@ MonoBehaviour:
   LeftButton: 0
   RightButton: 0
   DuckButton: 0
-  accForce: 10
+  accForce: 100
   maxSpeed: 15
   isDucking: 0
   ground:
