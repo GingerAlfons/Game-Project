@@ -7,4 +7,7 @@ public class Weapon : ScriptableObject
 {
     public new string name;
     public float knockback;
+    public float attackCooldown;
+    public Vector2 attackBoxSize;
+    public Vector3 attackBoxOffset;
 }

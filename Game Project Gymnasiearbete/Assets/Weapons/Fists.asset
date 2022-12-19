@@ -10,5 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f9993ac1ba723c344ae01ec55a530bd1, type: 3}
-  m_Name: Sword
+  m_Name: Fists
   m_EditorClassIdentifier: 
+  name: Fists
+  knockback: 1000
+  attackCooldown: 0.8
+  attackBoxSize: {x: 1, y: 1}
+  attackBoxOffset: {x: 1, y: 1}
