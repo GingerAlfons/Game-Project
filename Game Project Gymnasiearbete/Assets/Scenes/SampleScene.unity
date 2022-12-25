@@ -874,6 +874,10 @@ PrefabInstance:
       value: 256
       objectReference: {fileID: 0}
     - target: {fileID: 9169711065640842809, guid: 2793b2dc292f1ef4498d4d33bb4f76fb, type: 3}
+      propertyPath: InteractButton
+      value: 281
+      objectReference: {fileID: 0}
+    - target: {fileID: 9169711065640842809, guid: 2793b2dc292f1ef4498d4d33bb4f76fb, type: 3}
       propertyPath: LeftMouseButton
       value: 256
       objectReference: {fileID: 0}
@@ -1032,8 +1036,16 @@ PrefabInstance:
       value: 102
       objectReference: {fileID: 0}
     - target: {fileID: 9169711065640842809, guid: 2793b2dc292f1ef4498d4d33bb4f76fb, type: 3}
+      propertyPath: activeWeapon
+      value: 
+      objectReference: {fileID: 11400000, guid: e897931b96c09034aa23ce628baa6bf0, type: 2}
+    - target: {fileID: 9169711065640842809, guid: 2793b2dc292f1ef4498d4d33bb4f76fb, type: 3}
       propertyPath: damageAmount
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9169711065640842809, guid: 2793b2dc292f1ef4498d4d33bb4f76fb, type: 3}
+      propertyPath: InteractButton
+      value: 101
       objectReference: {fileID: 0}
     - target: {fileID: 9169711065640842809, guid: 2793b2dc292f1ef4498d4d33bb4f76fb, type: 3}
       propertyPath: damageInterval

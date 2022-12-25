@@ -15,10 +15,13 @@ public class PlayerCombat : MonoBehaviour
     public KeyCode AttackButton;
     public KeyCode LeftButton;
     public KeyCode RightButton;
+    public KeyCode InteractButton;
     public Vector2 attackBoxSize = new Vector2(2f, 1f);
     public Vector3 attackBoxOffset = new Vector3(0f, 1f, 0f);
     float HorizontalInput = 0f;
     bool isAttacking = false;
+
+    public Weapon activeWeapon;
 
     [SerializeField] public LayerMask player;
 
@@ -47,6 +50,12 @@ public class PlayerCombat : MonoBehaviour
                 dmgTimer = damageInterval;
                 Damage(damageAmount);
             }
+        }
+
+        //Kollar om spelaren vill ta upp ett nytt vapen
+        if (Input.GetKeyDown(InteractButton))
+        {
+            
         }
 
         //Kollar om spelaren vill attackera
@@ -88,7 +97,7 @@ public class PlayerCombat : MonoBehaviour
     IEnumerator Attack()
     {
         isAttacking = true;
-        yield return new WaitForSeconds(0f);
+        yield return new WaitForSeconds(1f);
 
         AttackBox();
 
