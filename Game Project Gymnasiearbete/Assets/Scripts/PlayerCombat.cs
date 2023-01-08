@@ -23,6 +23,8 @@ public class PlayerCombat : MonoBehaviour
 
     public Weapon activeWeapon;
 
+    public Healthbar healthbar;
+
     [SerializeField] public LayerMask player;
 
 
@@ -30,6 +32,7 @@ public class PlayerCombat : MonoBehaviour
     void Start()
     {
         health = maxHealth;
+        healthbar.setmaxhealth(maxHealth);
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
@@ -81,7 +84,7 @@ public class PlayerCombat : MonoBehaviour
     public void Damage(int dmg)
     {
         health -= dmg;
-
+        healthbar.sethealth(health);
         if (health <= 0)
             Kill();
     }
