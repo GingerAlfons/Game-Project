@@ -173,13 +173,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   health: 0
-  damageInterval: 0.25
-  damageAmount: 5
+  damageInterval: 0.05
+  damageAmount: 1
   AttackButton: 0
   LeftButton: 0
   RightButton: 0
+  InteractButton: 0
   attackBoxSize: {x: 2, y: 1}
   attackBoxOffset: {x: 0, y: 0.5, z: 0}
+  activeWeapon: {fileID: 11400000, guid: e897931b96c09034aa23ce628baa6bf0, type: 2}
+  healthbar: {fileID: 0}
   player:
     serializedVersion: 2
     m_Bits: 64

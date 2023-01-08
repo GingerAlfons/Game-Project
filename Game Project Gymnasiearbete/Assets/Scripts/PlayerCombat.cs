@@ -100,11 +100,10 @@ public class PlayerCombat : MonoBehaviour
     IEnumerator Attack()
     {
         isAttacking = true;
-        yield return new WaitForSeconds(1f);
 
         AttackBox();
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(activeWeapon.attackCooldown);
         isAttacking = false;
     }
 
@@ -124,7 +123,7 @@ public class PlayerCombat : MonoBehaviour
                 Debug.Log(cda[i].gameObject.name);
 
                 /*Targeted Player, Weapon*/
-                Knockback(cda[i].gameObject, 2500f); 
+                Knockback(cda[i].gameObject, activeWeapon.knockback); 
             }
         }
     }

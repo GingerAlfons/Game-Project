@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Baseball Bat
   m_EditorClassIdentifier: 
   name: Baseball Bat
-  knockback: 0
-  attackCooldown: 0
-  attackBoxSize: {x: 0, y: 0}
-  attackBoxOffset: {x: 0, y: 0}
+  weaponArtwork: {fileID: 0}
+  knockback: 1800
+  attackCooldown: 1.5
+  attackBoxSize: {x: 1, y: 1}
+  attackBoxOffset: {x: 1, y: 1, z: 0}

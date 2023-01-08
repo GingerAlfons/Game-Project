@@ -6,6 +6,7 @@ using UnityEngine;
 public class Weapon : ScriptableObject
 {
     public new string name;
+    public Sprite weaponArtwork;
     public float knockback;
     public float attackCooldown;
     public Vector2 attackBoxSize;

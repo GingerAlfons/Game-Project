@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Sledgehammer
   m_EditorClassIdentifier: 
   name: Sledgehammer
-  knockback: 0
-  attackCooldown: 0
-  attackBoxSize: {x: 0, y: 0}
-  attackBoxOffset: {x: 0, y: 0}
+  knockback: 2400
+  attackCooldown: 2.5
+  attackBoxSize: {x: 1, y: 1}
+  attackBoxOffset: {x: 1, y: 1, z: 0}
