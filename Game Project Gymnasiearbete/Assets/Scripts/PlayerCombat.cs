@@ -18,7 +18,7 @@ public class PlayerCombat : MonoBehaviour
     public KeyCode InteractButton;
     public Vector2 attackBoxSize = new Vector2(2f, 1f);
     public Vector3 attackBoxOffset = new Vector3(0f, 1f, 0f);
-    float HorizontalInput = 0f;
+    float HorizontalInput;
     bool isAttacking = false;
 
     public Weapon activeWeapon;

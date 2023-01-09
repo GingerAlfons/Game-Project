@@ -33,5 +33,7 @@ public class GameManager : MonoBehaviour
         {
             startTimer -= Time.deltaTime;
         }
+
+
     }
 }
