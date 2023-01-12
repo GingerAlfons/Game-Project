@@ -829,6 +829,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startTimer: 0
+  WeaponDrop: {fileID: 0}
+  SpawnButton: 104
 --- !u!4 &213622171
 Transform:
   m_ObjectHideFlags: 0

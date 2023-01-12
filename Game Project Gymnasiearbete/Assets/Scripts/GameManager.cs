@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
 {
     public float startTimer;
     public static GameManager Instance;
+    public GameObject WeaponDrop;
+    public KeyCode SpawnButton;
 
 
     private void Awake()
@@ -34,6 +36,11 @@ public class GameManager : MonoBehaviour
             startTimer -= Time.deltaTime;
         }
 
+        //Spawna in objekt (WeaponDrop)
+        if (Input.GetKeyDown(SpawnButton))
+        {
+            Instantiate(WeaponDrop, new Vector3(0,0,0), new Quaternion(0,0,0,0));
 
+        }
     }
 }

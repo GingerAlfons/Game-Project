@@ -18,7 +18,6 @@ public class PlayerCombat : MonoBehaviour
     public KeyCode InteractButton;
     public Vector2 attackBoxSize = new Vector2(2f, 1f);
     public Vector3 attackBoxOffset = new Vector3(0f, 1f, 0f);
-    float HorizontalInput;
     bool isAttacking = false;
 
     public Weapon activeWeapon;
@@ -70,12 +69,10 @@ public class PlayerCombat : MonoBehaviour
         //Kollar spelarens riktning inför attack
         if (Input.GetKey(RightButton))
         {
-            HorizontalInput = 1f;
             attackBoxOffset.x = 1;
         }
         else if (Input.GetKey(LeftButton))
         {
-            HorizontalInput = -1f;
             attackBoxOffset.x = -1;
         }
     }
