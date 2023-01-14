@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public GameObject WeaponDrop;
     public KeyCode SpawnButton;
+    public Vector3 WeaponSpawnCoords;
 
 
     private void Awake()
@@ -31,6 +32,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        //Timern för freeze perioden i början av spelet
         if (startTimer > 0)
         {
             startTimer -= Time.deltaTime;
@@ -39,7 +41,7 @@ public class GameManager : MonoBehaviour
         //Spawna in objekt (WeaponDrop)
         if (Input.GetKeyDown(SpawnButton))
         {
-            Instantiate(WeaponDrop, new Vector3(0,0,0), new Quaternion(0,0,0,0));
+            Instantiate(WeaponDrop, new Vector3(Random.Range(-10, 10),15,0), new Quaternion(0,0,0,0));
 
         }
     }
