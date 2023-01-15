@@ -831,6 +831,7 @@ MonoBehaviour:
   startTimer: 0
   WeaponDrop: {fileID: 0}
   SpawnButton: 104
+  WeaponSpawnCoords: {x: 0, y: 0, z: 0}
 --- !u!4 &213622171
 Transform:
   m_ObjectHideFlags: 0
@@ -2599,6 +2600,10 @@ PrefabInstance:
       value: Player 2
       objectReference: {fileID: 0}
     - target: {fileID: 9169711065640842809, guid: 2793b2dc292f1ef4498d4d33bb4f76fb, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1964559404}
+    - target: {fileID: 9169711065640842809, guid: 2793b2dc292f1ef4498d4d33bb4f76fb, type: 3}
       propertyPath: healthbar
       value: 
       objectReference: {fileID: 1406765344}
@@ -3980,6 +3985,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9169711065640842809, guid: 2793b2dc292f1ef4498d4d33bb4f76fb, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 432812155}
     - target: {fileID: 9169711065640842809, guid: 2793b2dc292f1ef4498d4d33bb4f76fb, type: 3}
       propertyPath: offset.x
       value: 0

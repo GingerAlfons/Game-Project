@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class PlayerCombat : MonoBehaviour
 {
-    SpriteRenderer spriteRenderer;
+    public SpriteRenderer spriteRenderer;
+    public Animator animator;
+
     [SerializeField] int maxHealth = 100;
     [SerializeField] int health;
 
@@ -100,8 +102,13 @@ public class PlayerCombat : MonoBehaviour
 
         AttackBox();
 
+        //Slåanimation
+        //animator.SetBool("isWalking", false);
+        animator.SetTrigger("punch");
+
         yield return new WaitForSeconds(activeWeapon.attackCooldown);
         isAttacking = false;
+        animator.ResetTrigger("punch");
     }
 
     public void AttackBox()

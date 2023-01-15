@@ -63,27 +63,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        ////Kollar spelarens riktning och vänder prefaben därefter
-        //if (Input.GetKey(RightButton))
-        //{
-        //    HorizontalInput = 1f;
-        //    sr.flipX = false;
-        //}
-        //else if (Input.GetKey(LeftButton))
-        //{
-        //    HorizontalInput = -1f;
-        //    sr.flipX = true;
-        //}
-        //else
-        //{
-        //    HorizontalInput = 0f;
-        //}
-        //if (Mathf.Abs(rb.velocity.x) <= maxSpeed)
-        //{
-        //Walk();
-        //}
-
-        //Animation
+       //Animation
         if (HorizontalInput != 0)
         {
             animator.SetBool("isWalking", true);
