@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
         //Spawna in objekt (WeaponDrop)
         if (Input.GetKeyDown(SpawnButton))
         {
-            Instantiate(WeaponDrop, new Vector3(Random.Range(-10, 10),15,0), new Quaternion(0,0,0,0));
+            Instantiate(WeaponDrop, Camera.main.transform.position + new Vector3(Random.Range(-10, 10),15,-10), Quaternion.identity);
 
         }
     }
