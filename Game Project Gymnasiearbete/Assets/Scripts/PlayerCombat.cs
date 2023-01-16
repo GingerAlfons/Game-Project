@@ -99,11 +99,11 @@ public class PlayerCombat : MonoBehaviour
     IEnumerator Attack()
     {
         isAttacking = true;
+        yield return new WaitForSeconds(0.1f);
 
         AttackBox();
 
         //Slåanimation
-        //animator.SetBool("isWalking", false);
         animator.SetTrigger("punch");
 
         yield return new WaitForSeconds(activeWeapon.attackCooldown);
