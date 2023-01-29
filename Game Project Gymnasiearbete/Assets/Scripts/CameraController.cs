@@ -4,27 +4,48 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public float movespeed = 1f;
-    public float acc = 0.1f;
-    public float movedirection;
+    public Rigidbody2D rbCamera;
+    public float moveSpeed = 1f;
+    // Har inte använt denna något: public float acc = 0.1f;
+    public float moveDirection;
+    public float moveCooldown;
     void Start()
     {
         
     }
-    public void move()
+    
+    void Update()
     {
-        int rand = Random.Range(1, 3);
-        if (rand == 1)
+        //Kollar om det är dags att kalla move funktionen annars minskar timern
+        if (moveCooldown <= 0)
         {
-            movedirection = -1f;
+            move();
+            Debug.Log("Kallar move funktionen");
         }
         else
         {
-            movedirection = 1f;
+            moveCooldown -= Time.deltaTime;
         }
     }
-    void Update()
-    {
 
+    //Move funktionen
+    public void move()
+    {
+        //Slumpar värdet på moveCooldown, moveSpeed och Riktningen
+        moveCooldown = Random.Range(2, 5);
+        moveSpeed = Random.Range(1, 5);
+        int rand = Random.Range(1, 3);
+
+        if (rand == 1)
+        {
+            moveDirection = 1;
+        }
+        else
+        {
+            moveDirection = -1;
+        }
+
+        //Ger kameran en velocity i x-led
+        rbCamera.velocity = new Vector2(moveDirection * moveSpeed, 0f);
     }
 }

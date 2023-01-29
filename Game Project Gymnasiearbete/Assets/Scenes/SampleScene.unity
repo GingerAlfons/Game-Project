@@ -1258,9 +1258,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 831698f0ac91cb249a855046c46ee5c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movespeed: 1
-  acc: 0.1
-  movedirection: 0
+  rbCamera: {fileID: 519420033}
+  moveSpeed: 1
+  moveDirection: 0
+  moveCooldown: 0
 --- !u!1 &521152771
 GameObject:
   m_ObjectHideFlags: 0

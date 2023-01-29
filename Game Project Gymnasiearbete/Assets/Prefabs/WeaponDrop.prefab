@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1675688284407075099}
   - component: {fileID: 2096105981273154908}
   - component: {fileID: 6334528654870888720}
+  - component: {fileID: 2755241552313280215}
   - component: {fileID: 6794733809359028662}
   m_Layer: 0
   m_Name: WeaponDrop
@@ -112,6 +113,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!50 &2755241552313280215
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2831947544400708180}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!114 &6794733809359028662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,3 +146,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36abc97a1a25b2f4e8e71be6250ced74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rbWeaponDrop: {fileID: 2755241552313280215}
+  colliderWeaponDrop: {fileID: 0}
+  ground:
+    serializedVersion: 2
+    m_Bits: 8
+  boxSize: {x: 1, y: 1}
+  offset: {x: 0, y: 0, z: 0}
