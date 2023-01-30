@@ -8,7 +8,7 @@ public class CameraController : MonoBehaviour
     public float moveSpeed = 1f;
     // Har inte använt denna något: public float acc = 0.1f;
     public float moveDirection;
-    public float moveCooldown;
+    public float moveCooldown = 0;
     void Start()
     {
         
@@ -17,14 +17,17 @@ public class CameraController : MonoBehaviour
     void Update()
     {
         //Kollar om det är dags att kalla move funktionen annars minskar timern
-        if (moveCooldown <= 0)
+        if (GameManager.Instance.startTimer <= 0)
         {
-            move();
-            Debug.Log("Kallar move funktionen");
-        }
-        else
-        {
-            moveCooldown -= Time.deltaTime;
+            if (moveCooldown <= 0)
+            {
+                move();
+                Debug.Log("Kallar move funktionen");
+            }
+            else
+            {
+                moveCooldown -= Time.deltaTime;
+            }
         }
     }
 

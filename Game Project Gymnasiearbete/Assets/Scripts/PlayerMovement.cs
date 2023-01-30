@@ -40,66 +40,68 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //Kollar spelarens riktning och vänder prefaben därefter
-        if (Input.GetKey(RightButton))
+        if (GameManager.Instance.startTimer <= 0f)
         {
-            HorizontalInput = 1f;
-            sr.flipX = false;
-        }
-        else if (Input.GetKey(LeftButton))
-        {
-            HorizontalInput = -1f;
-            sr.flipX = true;
-        }
-        else
-        {
-            HorizontalInput = 0f;
-        }
-        if (Mathf.Abs(rb.velocity.x) <= maxSpeed)
-        {
-            Walk();
+            //Kollar spelarens riktning och vänder prefaben därefter
+            if (Input.GetKey(RightButton))
+            {
+                HorizontalInput = 1f;
+                sr.flipX = false;
+            }
+            else if (Input.GetKey(LeftButton))
+            {
+                HorizontalInput = -1f;
+                sr.flipX = true;
+            }
+            else
+            {
+                HorizontalInput = 0f;
+            }
+            if (Mathf.Abs(rb.velocity.x) <= maxSpeed)
+            {
+                Walk();
+            }
         }
     }
 
     void Update()
     {
-       //Animation
-        if (HorizontalInput != 0)
+        if (GameManager.Instance.startTimer <= 0f)
         {
-            animator.SetBool("isWalking", true);
-        }
-        else
-        {
-            animator.SetBool("isWalking", false);
-        }
+            //Animation
+            if (HorizontalInput != 0)
+            {
+                animator.SetBool("isWalking", true);
+            }
+            else
+            {
+                animator.SetBool("isWalking", false);
+            }
 
 
-        if (GameManager.Instance.startTimer > 0f)
-            return;
+            //Kollar om spelaren nuddar marken och om den har tillåtelse att hoppa
+            bool grounded = Physics2D.OverlapBox(transform.position + offset, boxSize, 0f, ground);
+            if (grounded && rb.velocity.y <= 0)
+            {
+                doubleJump = 2;
+            }
 
+            if (doubleJump > 0 && Input.GetKeyDown(JumpButton))
+            {
+                Jump();
+            }
 
-        //Kollar om spelaren nuddar marken och om den har tillåtelse att hoppa
-        bool grounded = Physics2D.OverlapBox(transform.position + offset, boxSize, 0f, ground);
-        if (grounded && rb.velocity.y <= 0)
-        {
-            doubleJump = 2;
-        }
-
-        if (doubleJump > 0 && Input.GetKeyDown(JumpButton))
-        {
-            Jump();
-        }
-
-        //Ducka
-        if (Input.GetKey(DuckButton))
-        {
-            Duck(cc);
-            isDucking = true;
-        }
-        else
-        {
-            Stand(cc);
-            isDucking = false;
+            //Ducka
+            if (Input.GetKey(DuckButton))
+            {
+                Duck(cc);
+                isDucking = true;
+            }
+            else
+            {
+                Stand(cc);
+                isDucking = false;
+            }
         }
     }
     
