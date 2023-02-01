@@ -153,8 +153,8 @@ MonoBehaviour:
     m_Bits: 8
   jumpStrength: 35
   doubleJump: 0
-  boxSize: {x: 1, y: 0.2}
-  offset: {x: 0, y: -1, z: 0}
+  boxSize: {x: 1, y: 0.5}
+  offset: {x: 0, y: -2, z: 0}
   ccDefaultSize: {x: 2, y: 4}
   ccDefaultOffset: {x: 0, y: 0}
   ccDuckSize: {x: 2, y: 2}
@@ -171,6 +171,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c20519026584e640a4fdafd305a9ca5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 0}
+  animator: {fileID: 0}
   maxHealth: 100
   health: 0
   damageInterval: 0.05
