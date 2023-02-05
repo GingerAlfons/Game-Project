@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     public SpriteRenderer sr;
 
+    //Värden för rörelse-variabler
     [Header("Movement")]
     public KeyCode JumpButton;
     public KeyCode LeftButton;
