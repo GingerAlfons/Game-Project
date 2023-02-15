@@ -141,17 +141,18 @@ MonoBehaviour:
   cc: {fileID: 9169711065640842813}
   rb: {fileID: 9169711065640842812}
   sr: {fileID: 9169711065640842815}
+  grounded: 0
+  ducking: 0
   JumpButton: 0
   LeftButton: 0
   RightButton: 0
   DuckButton: 0
   accForce: 200
   maxSpeed: 20
-  isDucking: 0
   ground:
     serializedVersion: 2
     m_Bits: 8
-  jumpStrength: 35
+  jumpStrength: 40
   doubleJump: 0
   boxSize: {x: 1, y: 0.5}
   offset: {x: 0, y: -2, z: 0}
@@ -159,6 +160,9 @@ MonoBehaviour:
   ccDefaultOffset: {x: 0, y: 0}
   ccDuckSize: {x: 2, y: 2}
   ccDuckOffset: {x: 0, y: -1}
+  slideForce: 20
+  airSlideForce: 10
+  slideCD: 0.5
 --- !u!114 &9169711065640842809
 MonoBehaviour:
   m_ObjectHideFlags: 0
