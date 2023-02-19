@@ -23,6 +23,7 @@ public class PlayerCombat : MonoBehaviour
     bool isAttacking = false;
 
     public Weapon activeWeapon;
+    public Vector2 interactBox = new Vector2(2f,2f);
 
     public Healthbar healthbar;
 
@@ -59,7 +60,7 @@ public class PlayerCombat : MonoBehaviour
         //Kollar om spelaren vill ta upp ett nytt vapen
         if (Input.GetKeyDown(InteractButton))
         {
-            
+            CheckForWeapon();
         }
 
         //Kollar om spelaren vill attackera
@@ -126,8 +127,24 @@ public class PlayerCombat : MonoBehaviour
             {
                 Debug.Log(cda[i].gameObject.name);
 
-                /*Targeted Player, Weapon*/
+                //Targeted Player, Weapon
                 Knockback(cda[i].gameObject, activeWeapon.knockback); 
+            }
+        }
+    }
+
+    public void CheckForWeapon()
+    {
+        Collider2D[] cda = Physics2D.OverlapBoxAll(transform.position, interactBox, 0f);
+        for (int i = 0; i < cda.Length; i++)
+        {
+            WeaponDrop wp = cda[i].GetComponent<WeaponDrop>();
+            if (wp)
+            {
+                //Sätter spelarens aktiva vapen till vapnet på objektet
+                activeWeapon = wp.weaponValue;
+                //Raderar WeaponDrop objektet
+                Destroy(wp.gameObject);
             }
         }
     }
@@ -146,6 +163,9 @@ public class PlayerCombat : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(transform.position + attackBoxOffset, attackBoxSize);
+
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireCube(transform.position, interactBox);
     }
 
     public void Kill()

@@ -5,13 +5,19 @@ using UnityEngine;
 public class WeaponDrop : MonoBehaviour
 {
     public Rigidbody2D rbWeaponDrop;
+    public SpriteRenderer weaponSprite;
     public LayerMask ground;
     public Vector2 boxSize;
     public Vector3 offset;
 
+    public Weapon weaponValue;
+
     // Start is called before the first frame update
     void Start()
     {
+        //Sätter spriten på WeaponDrop objektet till weaponArtwork för den slumpade vapentypen
+        weaponSprite.sprite = weaponValue.weaponArtwork;
+
         //Sätter en start hastighet i negativ y-led
         rbWeaponDrop.velocity = new Vector2(0f,-2.5f);
     }

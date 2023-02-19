@@ -8,7 +8,7 @@ public class CameraController : MonoBehaviour
     public float moveSpeed = 1f;
     // Har inte använt denna något: public float acc = 0.1f;
     public float moveDirection;
-    public float moveCooldown = 0;
+    public float moveCooldown = 0f;
     void Start()
     {
         

@@ -134,23 +134,25 @@ public class PlayerMovement : MonoBehaviour
         }
     }
     
-
     public void Walk()
     {
         Vector2 walkDir = new Vector2(horizontalInput * accForce, 0f);
         rb.AddForce(walkDir, ForceMode2D.Force);
     }
+
     public void Jump()
     {
         rb.velocity = new Vector2(rb.velocity.x, jumpStrength);
         doubleJump--;
     }
+
     public void Duck(CapsuleCollider2D cc)
     {
         cc.size = ccDuckSize;
         cc.offset = ccDuckOffset;
         ducking = false;
     }
+
     public IEnumerator Slide(CapsuleCollider2D cc)
     {
         Duck(cc);
@@ -158,11 +160,13 @@ public class PlayerMovement : MonoBehaviour
         rb.AddForce(slideDir, ForceMode2D.Impulse);
         yield return new WaitForSeconds(slideCD);
     }
+
     public void AirSlide(CapsuleCollider2D cc)
     {
         rb.AddForce(new Vector2(0f, airSlideForce), ForceMode2D.Impulse);
         StartCoroutine(Slide(cc));
     }
+
     public void Stand(CapsuleCollider2D capsuleCollider2D)
     {
         capsuleCollider2D.size = ccDefaultSize;
@@ -174,5 +178,4 @@ public class PlayerMovement : MonoBehaviour
         Gizmos.color = Color.blue;
         Gizmos.DrawWireCube(transform.position + offset, boxSize);
     }
-
 }

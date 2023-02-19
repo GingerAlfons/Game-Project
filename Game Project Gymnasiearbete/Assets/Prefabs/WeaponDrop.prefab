@@ -147,9 +147,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rbWeaponDrop: {fileID: 2755241552313280215}
-  colliderWeaponDrop: {fileID: 0}
+  weaponSprite: {fileID: 2096105981273154908}
   ground:
     serializedVersion: 2
     m_Bits: 8
   boxSize: {x: 1, y: 1}
   offset: {x: 0, y: 0, z: 0}
+  weaponValue: {fileID: 0}

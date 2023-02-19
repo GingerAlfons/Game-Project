@@ -834,7 +834,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startTimer: 0
-  WeaponDrop: {fileID: 2831947544400708180, guid: c398ad18f4fcfdf40bcaeb9045a018bb, type: 3}
+  spawnTimer: 3
+  weaponDrop: {fileID: 6794733809359028662, guid: c398ad18f4fcfdf40bcaeb9045a018bb, type: 3}
+  weaponLibrary:
+  - {fileID: 11400000, guid: f123aaf0bd82b7940a96c9294db949af, type: 2}
+  - {fileID: 11400000, guid: cfcca024310b2124490b4c5a2259ed6b, type: 2}
   SpawnButton: 104
   WeaponSpawnCoords: {x: 0, y: 0, z: 0}
 --- !u!4 &213622171
