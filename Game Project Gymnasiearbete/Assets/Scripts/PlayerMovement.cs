@@ -80,7 +80,7 @@ public class PlayerMovement : MonoBehaviour
                     //Kollar om spelaren är på marken
                     if (grounded)
                     {
-                        Slide(cc);
+                        StartCoroutine(Slide(cc));
                     }
                     else
                     {
@@ -149,18 +149,19 @@ public class PlayerMovement : MonoBehaviour
     {
         cc.size = ccDuckSize;
         cc.offset = ccDuckOffset;
+        ducking = false;
     }
-    public void Slide(CapsuleCollider2D cc)
+    public IEnumerator Slide(CapsuleCollider2D cc)
     {
         Duck(cc);
-        Vector2 walkDir = new Vector2(horizontalInput * slideForce, 0f);
-        rb.AddForce(walkDir, ForceMode2D.Impulse);
-        ducking = false;
+        Vector2 slideDir = new Vector2(horizontalInput * slideForce, 0f);
+        rb.AddForce(slideDir, ForceMode2D.Impulse);
+        yield return new WaitForSeconds(slideCD);
     }
     public void AirSlide(CapsuleCollider2D cc)
     {
         rb.AddForce(new Vector2(0f, airSlideForce), ForceMode2D.Impulse);
-        Slide(cc);
+        StartCoroutine(Slide(cc));
     }
     public void Stand(CapsuleCollider2D capsuleCollider2D)
     {

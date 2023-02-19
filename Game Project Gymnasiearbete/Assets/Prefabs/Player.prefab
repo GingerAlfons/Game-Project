@@ -162,7 +162,7 @@ MonoBehaviour:
   ccDuckOffset: {x: 0, y: -1}
   slideForce: 20
   airSlideForce: 10
-  slideCD: 0.5
+  slideCD: 5
 --- !u!114 &9169711065640842809
 MonoBehaviour:
   m_ObjectHideFlags: 0
