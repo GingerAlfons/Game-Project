@@ -8,8 +8,9 @@ public class PlayerMovement : MonoBehaviour
     public CapsuleCollider2D cc;
     public Rigidbody2D rb;
     public SpriteRenderer sr;
-    public bool grounded;
-    public bool ducking;
+    public bool grounded; //Kollar om spelaren är i kontakt med marken
+    public bool ducking; //Kollar 
+    public bool isSliding;
 
     //Värden för rörelse-variabler
     [Header("Movement")]
@@ -77,12 +78,12 @@ public class PlayerMovement : MonoBehaviour
                 }
                 else
                 {
-                    //Kollar om spelaren är på marken
-                    if (grounded)
+                    //Kollar om spelaren är på marken och om isSliding är falsk
+                    if (grounded && !isSliding)
                     {
                         StartCoroutine(Slide(cc));
                     }
-                    else
+                    else if (!isSliding)
                     {
                         AirSlide(cc);
                     }
@@ -155,10 +156,12 @@ public class PlayerMovement : MonoBehaviour
 
     public IEnumerator Slide(CapsuleCollider2D cc)
     {
+        isSliding = true;
         Duck(cc);
         Vector2 slideDir = new Vector2(horizontalInput * slideForce, 0f);
         rb.AddForce(slideDir, ForceMode2D.Impulse);
         yield return new WaitForSeconds(slideCD);
+        isSliding = false;
     }
 
     public void AirSlide(CapsuleCollider2D cc)

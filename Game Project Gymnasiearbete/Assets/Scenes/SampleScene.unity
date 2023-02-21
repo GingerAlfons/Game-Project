@@ -3058,6 +3058,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 9169711065640842786, guid: 2793b2dc292f1ef4498d4d33bb4f76fb, type: 3}
+      propertyPath: slideCD
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9169711065640842786, guid: 2793b2dc292f1ef4498d4d33bb4f76fb, type: 3}
       propertyPath: animator
       value: 
       objectReference: {fileID: 1964559404}
