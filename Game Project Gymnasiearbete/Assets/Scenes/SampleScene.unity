@@ -1306,7 +1306,7 @@ MonoBehaviour:
   rbCamera: {fileID: 519420033}
   redPlayerPos: {fileID: 9169711066144088334}
   greenPlayerPos: {fileID: 1520426974}
-  yValueConstant: 10
+  minYConstant: 10
   moveSpeed: 1
   moveDirection: 0
   moveCooldown: 0
@@ -3134,7 +3134,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9169711065640842814, guid: 2793b2dc292f1ef4498d4d33bb4f76fb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 9169711065640842814, guid: 2793b2dc292f1ef4498d4d33bb4f76fb, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4750,7 +4750,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9169711065640842814, guid: 2793b2dc292f1ef4498d4d33bb4f76fb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 9169711065640842814, guid: 2793b2dc292f1ef4498d4d33bb4f76fb, type: 3}
       propertyPath: m_LocalPosition.z

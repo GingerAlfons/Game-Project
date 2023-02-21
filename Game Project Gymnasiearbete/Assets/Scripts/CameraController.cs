@@ -7,7 +7,7 @@ public class CameraController : MonoBehaviour
     public Rigidbody2D rbCamera;
     public Transform redPlayerPos;
     public Transform greenPlayerPos;
-    public float yValueConstant;
+    public float minYConstant;
     public float moveSpeed = 1f;
     // Har inte använt denna något: public float acc = 0.1f;
     public float moveDirection;
@@ -27,7 +27,7 @@ public class CameraController : MonoBehaviour
         {
             if (moveCooldown <= 0)
             {
-                move();
+                //move();
                 //Debug.Log("Kallar move funktionen");
             }
             else
@@ -40,12 +40,16 @@ public class CameraController : MonoBehaviour
     //Sätter y-värdet till kameran baserat av spelarnas position och en konstant
     public void SetYValue()
     {
-        float newCameraYValue = (redPlayerPos.position.y - greenPlayerPos.position.y) / 3;
-        if (newCameraYValue < 0)
+
+        float newCameraYValue = (redPlayerPos.position.y + greenPlayerPos.position.y) / 2;
+        if (newCameraYValue <= minYConstant)
         {
-            newCameraYValue = newCameraYValue * -1;
+            transform.position = new Vector3(transform.position.x, minYConstant, transform.position.z);
         }
-        transform.position = new Vector3(transform.position.x, newCameraYValue + yValueConstant, transform.position.z);
+        else
+        {
+            transform.position = new Vector3(transform.position.x, newCameraYValue, transform.position.z);
+        }
     }
 
     //Move funktionen
