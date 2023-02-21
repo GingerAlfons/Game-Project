@@ -1304,6 +1304,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rbCamera: {fileID: 519420033}
+  redPlayerPos: {fileID: 9169711066144088334}
+  greenPlayerPos: {fileID: 1520426974}
+  yValueConstant: 10
   moveSpeed: 1
   moveDirection: 0
   moveCooldown: 0
@@ -3195,6 +3198,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2793b2dc292f1ef4498d4d33bb4f76fb, type: 3}
+--- !u!4 &1520426974 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9169711065640842814, guid: 2793b2dc292f1ef4498d4d33bb4f76fb, type: 3}
+  m_PrefabInstance: {fileID: 1520426973}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1551539737
 GameObject:
   m_ObjectHideFlags: 0
@@ -4806,3 +4814,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2793b2dc292f1ef4498d4d33bb4f76fb, type: 3}
+--- !u!4 &9169711066144088334 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9169711065640842814, guid: 2793b2dc292f1ef4498d4d33bb4f76fb, type: 3}
+  m_PrefabInstance: {fileID: 9169711066144088333}
+  m_PrefabAsset: {fileID: 0}
