@@ -1,23 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public float startTimer;
+    public float roundTime;
     public float spawnTimer = 0f;
     public static GameManager Instance;
     public WeaponDrop weaponDrop;
     public Weapon[] weaponLibrary = new Weapon[0];
     public KeyCode SpawnButton;
     public Vector3 WeaponSpawnCoords;
-
+    public GameObject redPlayer;
+    public GameObject greenPlayer;
+    public int redWins = 0;
+    public int greenWins = 0;
 
     private void Awake()
     {
         if (Instance != null)
         {
             Instance.RoundStart();
+            Instance.redPlayer = redPlayer;
+            Instance.greenPlayer = greenPlayer;
             Destroy(gameObject);
             return;
         }
@@ -30,10 +37,14 @@ public class GameManager : MonoBehaviour
     public void RoundStart()
     {
         startTimer = 3f;
+        roundTime = 0f;
     }
 
     private void Update()
     {
+        //En timer som håller koll på hur länge den aktiva rundan har pågått
+        roundTime += Time.deltaTime;
+
         //Timern för freeze perioden i början av spelet
         if (startTimer > 0)
         {
@@ -68,5 +79,37 @@ public class GameManager : MonoBehaviour
         WeaponDrop clone = Instantiate(weaponDrop, Camera.main.transform.position + new Vector3(Random.Range(-10, 10), 15, 10), Quaternion.identity);
         clone.weaponValue = weaponLibrary[Random.Range(0, weaponLibrary.Length)];
         Debug.Log("Objekt spawnas! " + "Tid till nästa objekt " + spawnTimer);
+    }
+
+    public void EndGame(GameObject targetedObject)
+    {
+        //Stänger av Spelaren som dör
+        targetedObject.SetActive(false);
+
+        //Kollar vilken spelare som vann och poängen för den spelaren
+        if (targetedObject == redPlayer)
+        {
+            greenWins++;
+            if (greenWins == 3)
+            {
+                //Laddar en Win Screen med ett meddelande att "Green Wins!"
+            }
+            else
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
+        }
+        else if (targetedObject == greenPlayer)
+        {
+            redWins++;
+            if (redWins == 3)
+            {
+                //Laddar en Win Screen med ett meddelande att "Red Wins!"
+            }
+            else
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
+        }
     }
 }

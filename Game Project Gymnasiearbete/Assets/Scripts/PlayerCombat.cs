@@ -86,7 +86,7 @@ public class PlayerCombat : MonoBehaviour
         health -= dmg;
         healthbar.sethealth(health);
         if (health <= 0)
-            Kill();
+            GameManager.Instance.EndGame(gameObject);
     }
 
     public void StartAttack()
@@ -166,10 +166,5 @@ public class PlayerCombat : MonoBehaviour
 
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireCube(transform.position, interactBox);
-    }
-
-    public void Kill()
-    {
-        gameObject.SetActive(false);
     }
 }
