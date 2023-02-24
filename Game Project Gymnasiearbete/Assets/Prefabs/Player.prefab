@@ -143,6 +143,8 @@ MonoBehaviour:
   sr: {fileID: 9169711065640842815}
   grounded: 0
   ducking: 0
+  sliding: 0
+  jumping: 0
   JumpButton: 0
   LeftButton: 0
   RightButton: 0
@@ -154,15 +156,15 @@ MonoBehaviour:
     m_Bits: 8
   jumpStrength: 40
   doubleJump: 0
-  boxSize: {x: 1, y: 0.5}
-  offset: {x: 0, y: -2, z: 0}
+  groundBoxSize: {x: 1.5, y: 0.5}
+  groundBoxOffset: {x: 0, y: -1.5, z: 0}
   ccDefaultSize: {x: 2, y: 4}
   ccDefaultOffset: {x: 0, y: 0}
   ccDuckSize: {x: 2, y: 2}
   ccDuckOffset: {x: 0, y: -1}
   slideForce: 20
   airSlideForce: 10
-  slideCD: 5
+  slideCD: 0.5
 --- !u!114 &9169711065640842809
 MonoBehaviour:
   m_ObjectHideFlags: 0

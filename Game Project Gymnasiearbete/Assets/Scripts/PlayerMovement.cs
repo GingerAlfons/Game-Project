@@ -8,9 +8,10 @@ public class PlayerMovement : MonoBehaviour
     public CapsuleCollider2D cc;
     public Rigidbody2D rb;
     public SpriteRenderer sr;
-    public bool grounded; //Kollar om spelaren är i kontakt med marken
-    public bool ducking; //Kollar 
-    public bool isSliding;
+    public bool grounded; //Sann om spelaren är i kontakt med marken
+    public bool ducking; //Sann om spelaren duckar
+    public bool sliding; //Sann om spelaren glider
+    public bool jumping;
 
     //Värden för rörelse-variabler
     [Header("Movement")]
@@ -27,8 +28,8 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask ground;
     public float jumpStrength = 15f;
     public int doubleJump;
-    public Vector2 boxSize = new Vector2(1f, 1f);
-    public Vector3 offset = new Vector3(0f, 0f, 0f);
+    public Vector2 groundBoxSize = new Vector2(1f, 1f);
+    public Vector3 groundBoxOffset = new Vector3(0f, 0f, 0f);
 
     //Värden för duck-variabler
     [Header("Duck & Slide")]
@@ -69,25 +70,26 @@ public class PlayerMovement : MonoBehaviour
                 Walk();
             }
 
-            //Kollar om spelaren har tryckt ned duck-knappen
-            if (ducking)
+            //Kollar om spelaren har tryckt ned hopp-knappen 
+            if (jumping)
             {
-                if (horizontalInput == 0f)
-                {
-                    Duck(cc);
-                }
-                else
-                {
-                    //Kollar om spelaren är på marken och om isSliding är falsk
-                    if (grounded && !isSliding)
-                    {
-                        StartCoroutine(Slide(cc));
-                    }
-                    else if (!isSliding)
-                    {
-                        AirSlide(cc);
-                    }
-                }
+                Jump();
+            }
+
+            //Kollar om duck-knappen har blivit nedtryckt samt att höger- eller vänster-knapp inte är nedtryckt
+            if (ducking && horizontalInput == 0)
+            {
+                Duck(cc);
+            }
+            //Kollar om duck-knappen har blivit nedtryckt, att spelaren är på marken samt att den inte redan glider
+            else if (ducking && grounded && !sliding)
+            {
+                StartCoroutine(Slide(cc));
+            }
+            //Kollar om duck-knappen har blivit nedtryckt samt att den inte redan glider
+            else if (ducking && !sliding)
+            {
+                AirSlide(cc);
             }
         }
     }
@@ -108,17 +110,17 @@ public class PlayerMovement : MonoBehaviour
 
 
             //Kollar om spelaren nuddar marken
-            grounded = Physics2D.OverlapBox(transform.position + offset, boxSize, 0f, ground);
+            grounded = Physics2D.OverlapBox(transform.position + groundBoxOffset, groundBoxSize, 0f, ground);
 
-            //Kollar om spelarens "grounded"-box nuddar marken och om rörelsen i y-led är 0
+            //Kollar om spelarens "grounded"-box nuddar marken samt om rörelsen i y-led är 0
             if (grounded && rb.velocity.y <= 0)
             {
                 doubleJump = 2;
             }
-
+            //Kollar om spelaren kan hoppa samt om den trycker ned hopp-knappen
             if (doubleJump > 0 && Input.GetKeyDown(JumpButton))
             {
-                Jump();
+                jumping = true;
             }
 
             //Kollar om spelaren trycker ned duck-knappen
@@ -143,25 +145,25 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump()
     {
-        rb.velocity = new Vector2(rb.velocity.x, jumpStrength);
+        rb.velocity = new Vector3(0f, jumpStrength, 0f);
         doubleJump--;
+        jumping = false;
     }
 
     public void Duck(CapsuleCollider2D cc)
     {
         cc.size = ccDuckSize;
         cc.offset = ccDuckOffset;
-        ducking = false;
     }
 
     public IEnumerator Slide(CapsuleCollider2D cc)
     {
-        isSliding = true;
+        sliding = true;
         Duck(cc);
         Vector2 slideDir = new Vector2(horizontalInput * slideForce, 0f);
         rb.AddForce(slideDir, ForceMode2D.Impulse);
         yield return new WaitForSeconds(slideCD);
-        isSliding = false;
+        sliding = false;
     }
 
     public void AirSlide(CapsuleCollider2D cc)
@@ -174,11 +176,12 @@ public class PlayerMovement : MonoBehaviour
     {
         capsuleCollider2D.size = ccDefaultSize;
         capsuleCollider2D.offset = ccDefaultOffset;
+        ducking = false;
     }
 
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireCube(transform.position + offset, boxSize);
+        Gizmos.DrawWireCube(transform.position + groundBoxOffset, groundBoxSize);
     }
 }
