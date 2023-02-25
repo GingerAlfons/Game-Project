@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -17,6 +18,9 @@ public class GameManager : MonoBehaviour
     public GameObject greenPlayer;
     public int redWins = 0;
     public int greenWins = 0;
+
+    [SerializeField]
+    private TextMeshProUGUI timer;
 
     private void Awake()
     {
@@ -42,13 +46,17 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        //En timer som håller koll på hur länge den aktiva rundan har pågått
-        roundTime += Time.deltaTime;
-
         //Timern för freeze perioden i början av spelet
         if (startTimer > 0)
         {
+            countDownTimer(startTimer);
             startTimer -= Time.deltaTime;
+        }
+        else
+        {
+            //En timer som håller koll på hur länge den aktiva rundan har pågått
+            roundTime += Time.deltaTime;
+            countDownTimer(roundTime);
         }
 
         //Spawna in objekt manuellt (WeaponDrop)
@@ -70,6 +78,13 @@ public class GameManager : MonoBehaviour
                 spawnTimer -= Time.deltaTime;
             }
         }
+    }
+
+    private void countDownTimer(float time)
+    {
+        float minutes = Mathf.FloorToInt(time / 60);
+        float seconds = Mathf.FloorToInt(time % 60);
+        timer.text = string.Format("{00:00} : {01:00}", minutes, seconds);
     }
 
     void SpawnWeaponDrop()
