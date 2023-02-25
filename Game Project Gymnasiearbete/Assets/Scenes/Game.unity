@@ -840,6 +840,7 @@ MonoBehaviour:
   weaponLibrary:
   - {fileID: 11400000, guid: f123aaf0bd82b7940a96c9294db949af, type: 2}
   - {fileID: 11400000, guid: cfcca024310b2124490b4c5a2259ed6b, type: 2}
+  - {fileID: 11400000, guid: 301d670cee119dd44a37dbcafb377823, type: 2}
   SpawnButton: 104
   WeaponSpawnCoords: {x: 0, y: 0, z: 0}
   redPlayer: {fileID: 432812148}

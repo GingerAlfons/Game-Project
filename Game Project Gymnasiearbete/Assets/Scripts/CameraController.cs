@@ -27,8 +27,8 @@ public class CameraController : MonoBehaviour
         {
             if (moveCooldown <= 0)
             {
-                //move();
-                //Debug.Log("Kallar move funktionen");
+                move();
+                Debug.Log("Kallar move funktionen");
             }
             else
             {

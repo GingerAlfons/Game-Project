@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f9993ac1ba723c344ae01ec55a530bd1, type: 3}
-  m_Name: Sledgehammer
+  m_Name: Shovel
   m_EditorClassIdentifier: 
-  name: Sledgehammer
-  weaponArtwork: {fileID: 21300000, guid: 776d1185ba7d41544bdf2bf63d7c8afa, type: 3}
-  knockback: 2400
-  attackCooldown: 2.5
+  name: Shovel
+  weaponArtwork: {fileID: 21300000, guid: b9d19d61a814fd544b55056b0ddd9e50, type: 3}
+  knockback: 2000
+  attackCooldown: 2
   attackBoxSize: {x: 1, y: 1}
   attackBoxOffset: {x: 1, y: 1, z: 0}

@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Fists
   m_EditorClassIdentifier: 
   name: Fists
-  knockback: 1000
+  weaponArtwork: {fileID: 0}
+  knockback: 800
   attackCooldown: 0.8
   attackBoxSize: {x: 1, y: 1}
-  attackBoxOffset: {x: 1, y: 1}
+  attackBoxOffset: {x: 1, y: 1, z: 0}

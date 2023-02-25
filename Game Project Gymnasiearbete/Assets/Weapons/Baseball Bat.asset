@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Baseball Bat
   weaponArtwork: {fileID: 21300000, guid: 397183315d2b4ca469254753e6086deb, type: 3}
-  knockback: 1800
+  knockback: 1600
   attackCooldown: 1.5
   attackBoxSize: {x: 1, y: 1}
   attackBoxOffset: {x: 1, y: 1, z: 0}
