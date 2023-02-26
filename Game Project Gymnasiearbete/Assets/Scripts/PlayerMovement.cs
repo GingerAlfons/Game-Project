@@ -145,7 +145,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump()
     {
-        rb.velocity = new Vector3(0f, jumpStrength, 0f);
+        rb.velocity = new Vector3(rb.velocity.x, jumpStrength, 0f);
         doubleJump--;
         jumping = false;
     }

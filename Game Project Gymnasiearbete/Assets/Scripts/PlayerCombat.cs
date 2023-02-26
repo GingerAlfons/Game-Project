@@ -6,6 +6,7 @@ public class PlayerCombat : MonoBehaviour
 {
     public SpriteRenderer spriteRenderer;
     public Animator animator;
+    public Animator weaponAnimator;
 
     [SerializeField] int maxHealth = 100;
     [SerializeField] int health;
@@ -78,6 +79,8 @@ public class PlayerCombat : MonoBehaviour
         {
             attackBoxOffset.x = -1;
         }
+
+        WeaponAnimation();
     }
 
     //Damage systemet
@@ -157,6 +160,22 @@ public class PlayerCombat : MonoBehaviour
         Debug.Log(angle.x);
         
         rb.AddForce(angle * knockbackForce, ForceMode2D.Force);
+    }
+
+    public void WeaponAnimation()
+    {
+        //Kollar vilket vapen som är aktivt och startar en animation beroende på det
+        switch (activeWeapon.name)
+        {
+            case "Sledgehammer":
+                weaponAnimator.SetTrigger("holdingSledgehammer");
+                break;
+            case "Shovel":
+                weaponAnimator.SetTrigger("holdingShovel");
+                break;
+            default:
+                break;
+        }
     }
 
     private void OnDrawGizmosSelected()
