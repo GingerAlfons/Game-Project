@@ -101,11 +101,11 @@ public class PlayerMovement : MonoBehaviour
             //Animation
             if (horizontalInput != 0)
             {
-                animator.SetBool("isWalking", true);
+                animator.SetBool("walking", true);
             }
             else
             {
-                animator.SetBool("isWalking", false);
+                animator.SetBool("walking", false);
             }
 
 

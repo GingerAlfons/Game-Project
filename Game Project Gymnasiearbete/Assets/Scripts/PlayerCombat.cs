@@ -79,8 +79,6 @@ public class PlayerCombat : MonoBehaviour
         {
             attackBoxOffset.x = -1;
         }
-
-        WeaponAnimation();
     }
 
     //Damage systemet
@@ -107,12 +105,14 @@ public class PlayerCombat : MonoBehaviour
 
         AttackBox();
 
-        //Slåanimation
-        animator.SetTrigger("punch");
+        //Triggar slåanimation
+        TriggerHitAnimation();
 
         yield return new WaitForSeconds(activeWeapon.attackCooldown);
         isAttacking = false;
-        animator.ResetTrigger("punch");
+
+        //Återställer slåanimation
+        ResetHitAnimation();
     }
 
     public void AttackBox()
@@ -148,6 +148,7 @@ public class PlayerCombat : MonoBehaviour
                 activeWeapon = wp.weaponValue;
                 //Raderar WeaponDrop objektet
                 Destroy(wp.gameObject);
+                WeaponHoldAnimation();
             }
         }
     }
@@ -162,19 +163,39 @@ public class PlayerCombat : MonoBehaviour
         rb.AddForce(angle * knockbackForce, ForceMode2D.Force);
     }
 
-    public void WeaponAnimation()
+    //Kollar vilket vapen spelaren håller i och spelar upp respektive animation
+    public void WeaponHoldAnimation()
     {
         //Kollar vilket vapen som är aktivt och startar en animation beroende på det
-        switch (activeWeapon.name)
+        if (activeWeapon.name != "fists")
         {
-            case "Sledgehammer":
-                weaponAnimator.SetTrigger("holdingSledgehammer");
-                break;
-            case "Shovel":
-                weaponAnimator.SetTrigger("holdingShovel");
-                break;
-            default:
-                break;
+            weaponAnimator.SetTrigger("holding" + activeWeapon.name);
+        }
+    }
+
+    //Startar slåanimation
+    public void TriggerHitAnimation()
+    {
+        if (activeWeapon.name == "Fists")
+        {
+            animator.SetTrigger("hit" + activeWeapon.name);
+        }
+        else
+        {
+            weaponAnimator.SetTrigger("hit" + activeWeapon.name);
+        }
+    }
+
+    //Återställer slåanimation
+    public void ResetHitAnimation()
+    {
+        if (activeWeapon.name == "Fists")
+        {
+            animator.ResetTrigger("hit" + activeWeapon.name);
+        }
+        else
+        {
+            weaponAnimator.ResetTrigger("hit" + activeWeapon.name);
         }
     }
 
