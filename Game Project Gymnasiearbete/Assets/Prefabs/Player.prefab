@@ -179,6 +179,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
   animator: {fileID: 0}
+  weaponAnimator: {fileID: 0}
   maxHealth: 100
   health: 0
   damageInterval: 0.05
