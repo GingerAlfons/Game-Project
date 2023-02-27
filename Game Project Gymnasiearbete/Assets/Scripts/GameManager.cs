@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
             Instance.RoundStart();
             Instance.redPlayer = redPlayer;
             Instance.greenPlayer = greenPlayer;
+            Instance.timer = timer;
             Destroy(gameObject);
             return;
         }
