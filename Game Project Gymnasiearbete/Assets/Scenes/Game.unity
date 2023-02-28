@@ -1287,6 +1287,8 @@ MonoBehaviour:
   rbCamera: {fileID: 519420033}
   redPlayerPos: {fileID: 9169711066144088334}
   greenPlayerPos: {fileID: 1520426974}
+  cameraPos: {fileID: 519420032}
+  maxXConstant: 17.5
   minYConstant: 10
   moveSpeed: 1
   moveDirection: 0
@@ -2803,6 +2805,10 @@ PrefabInstance:
       propertyPath: healthbar
       value: 
       objectReference: {fileID: 1406765344}
+    - target: {fileID: 9169711065640842809, guid: 2793b2dc292f1ef4498d4d33bb4f76fb, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9169711065640842809, guid: 2793b2dc292f1ef4498d4d33bb4f76fb, type: 3}
       propertyPath: LeftButton
       value: 276
@@ -5274,6 +5280,10 @@ PrefabInstance:
       propertyPath: healthbar
       value: 
       objectReference: {fileID: 330720990}
+    - target: {fileID: 9169711065640842809, guid: 2793b2dc292f1ef4498d4d33bb4f76fb, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9169711065640842809, guid: 2793b2dc292f1ef4498d4d33bb4f76fb, type: 3}
       propertyPath: LeftButton
       value: 97
