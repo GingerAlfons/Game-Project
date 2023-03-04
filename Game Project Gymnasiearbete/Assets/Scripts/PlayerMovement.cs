@@ -145,6 +145,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump()
     {
+        FindObjectOfType<AudioManager>().Play("Jump");
         rb.velocity = new Vector3(rb.velocity.x, jumpStrength, 0f);
         doubleJump--;
         jumping = false;

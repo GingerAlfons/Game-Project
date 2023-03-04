@@ -159,7 +159,7 @@ public class PlayerCombat : MonoBehaviour
         
         Vector2 angle = new Vector2(enemy.transform.position.x - transform.position.x, enemy.transform.position.y - transform.position.y).normalized;
         Debug.Log(angle.x);
-        
+        FindObjectOfType<AudioManager>().Play("Hit");
         rb.AddForce(angle * knockbackForce, ForceMode2D.Force);
     }
 
@@ -169,6 +169,7 @@ public class PlayerCombat : MonoBehaviour
         //Kollar vilket vapen som är aktivt och startar en animation beroende på det
         if (activeWeapon.name != "fists")
         {
+            FindObjectOfType<AudioManager>().Play("Pickup");
             weaponAnimator.SetTrigger("holding" + activeWeapon.name);
         }
     }
