@@ -1290,7 +1290,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 831698f0ac91cb249a855046c46ee5c5, type: 3}
   m_Name: 
@@ -2085,6 +2085,11 @@ PrefabInstance:
 --- !u!95 &930464882 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 2972739261067962372, guid: 1cf4c526a25f70e43a4cf7ec542b7d2f, type: 3}
+  m_PrefabInstance: {fileID: 1539067136}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &930464883 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 1024562939878935746, guid: 1cf4c526a25f70e43a4cf7ec542b7d2f, type: 3}
   m_PrefabInstance: {fileID: 1539067136}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &956291221
@@ -2955,6 +2960,10 @@ PrefabInstance:
       propertyPath: LeftMouseButton
       value: 256
       objectReference: {fileID: 0}
+    - target: {fileID: 9169711065640842809, guid: 2793b2dc292f1ef4498d4d33bb4f76fb, type: 3}
+      propertyPath: WeaponSpriteRenderer
+      value: 
+      objectReference: {fileID: 930464883}
     - target: {fileID: 9169711065640842812, guid: 2793b2dc292f1ef4498d4d33bb4f76fb, type: 3}
       propertyPath: m_LinearDrag
       value: 1
@@ -5385,6 +5394,11 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
+--- !u!212 &2040571989 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 1024562939878935746, guid: 1cf4c526a25f70e43a4cf7ec542b7d2f, type: 3}
+  m_PrefabInstance: {fileID: 639103351}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2042266534
 GameObject:
   m_ObjectHideFlags: 0
@@ -5629,6 +5643,10 @@ PrefabInstance:
       propertyPath: LeftMouseButton
       value: 102
       objectReference: {fileID: 0}
+    - target: {fileID: 9169711065640842809, guid: 2793b2dc292f1ef4498d4d33bb4f76fb, type: 3}
+      propertyPath: WeaponSpriteRenderer
+      value: 
+      objectReference: {fileID: 2040571989}
     - target: {fileID: 9169711065640842812, guid: 2793b2dc292f1ef4498d4d33bb4f76fb, type: 3}
       propertyPath: m_Material
       value: 

@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerCombat : MonoBehaviour
 {
     public SpriteRenderer spriteRenderer;
+    public SpriteRenderer WeaponSpriteRenderer;
     public Animator animator;
     public Animator weaponAnimator;
 
@@ -74,10 +75,14 @@ public class PlayerCombat : MonoBehaviour
         if (Input.GetKey(RightButton))
         {
             attackBoxOffset.x = 1;
+            WeaponSpriteRenderer.flipX = false; //Vänder tillbaka vapenspriten
+            weaponAnimator.SetBool("facingRight", true); //Ändrar animationsparametern
         }
         else if (Input.GetKey(LeftButton))
         {
             attackBoxOffset.x = -1;
+            WeaponSpriteRenderer.flipX = true; //Vänder vapenspriten
+            weaponAnimator.SetBool("facingRight", false);
         }
     }
 
