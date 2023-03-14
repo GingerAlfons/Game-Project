@@ -16,11 +16,15 @@ public class GameManager : MonoBehaviour
     public Vector3 WeaponSpawnCoords;
     public GameObject redPlayer;
     public GameObject greenPlayer;
-    public int redWins = 0;
-    public int greenWins = 0;
+    public float redWins = 0f;
+    public float greenWins = 0f;
 
     [SerializeField]
     private TextMeshProUGUI timer;
+    [SerializeField]
+    private TextMeshProUGUI redWinsText;
+    [SerializeField]
+    private TextMeshProUGUI greenWinsText;
 
     private void Awake()
     {
@@ -43,6 +47,7 @@ public class GameManager : MonoBehaviour
     {
         startTimer = 3f;
         roundTime = 0f;
+        ScoreText();
     }
 
     private void Update()
@@ -86,6 +91,14 @@ public class GameManager : MonoBehaviour
         float minutes = Mathf.FloorToInt(time / 60);
         float seconds = Mathf.FloorToInt(time % 60);
         timer.text = string.Format("{00:00} : {01:00}", minutes, seconds);
+    }
+
+    private void ScoreText()
+    {
+        redWinsText.text = string.Format("{0}", redWins);
+        greenWinsText.text = string.Format("{0}", greenWins);
+        Debug.Log(redWinsText);
+        Debug.Log(greenWinsText);
     }
 
     void SpawnWeaponDrop()

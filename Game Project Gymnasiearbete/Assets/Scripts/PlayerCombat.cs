@@ -36,7 +36,7 @@ public class PlayerCombat : MonoBehaviour
     void Start()
     {
         health = maxHealth;
-        healthbar.setmaxhealth(maxHealth);
+        healthbar.SetMaxHealth(maxHealth);
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
@@ -90,7 +90,7 @@ public class PlayerCombat : MonoBehaviour
     public void Damage(int dmg)
     {
         health -= dmg;
-        healthbar.sethealth(health);
+        healthbar.SetHealth(health);
         if (health <= 0)
             GameManager.Instance.EndGame(gameObject);
     }

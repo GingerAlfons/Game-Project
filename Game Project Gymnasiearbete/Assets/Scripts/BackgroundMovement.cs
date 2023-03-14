@@ -13,7 +13,7 @@ public class BackgroundMovement : MonoBehaviour
     {
         BgMovement();
     }
-
+    //Flyttar bakgrunderna i relation med kameran i x-led
     public void BgMovement()
     {
         transform.position = new Vector3(camTf.position.x * bgMoveMultiplier, transform.position.y, transform.position.z);
