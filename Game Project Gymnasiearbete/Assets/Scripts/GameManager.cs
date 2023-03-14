@@ -34,6 +34,9 @@ public class GameManager : MonoBehaviour
             Instance.redPlayer = redPlayer;
             Instance.greenPlayer = greenPlayer;
             Instance.timer = timer;
+            Instance.redWinsText = redWinsText;
+            Instance.greenWinsText = greenWinsText;
+            Instance.ScoreText();
             Destroy(gameObject);
             return;
         }
@@ -41,13 +44,13 @@ public class GameManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
         RoundStart();
+        ScoreText();
     }
 
     public void RoundStart()
     {
         startTimer = 3f;
         roundTime = 0f;
-        ScoreText();
     }
 
     private void Update()
@@ -97,8 +100,6 @@ public class GameManager : MonoBehaviour
     {
         redWinsText.text = string.Format("{0}", redWins);
         greenWinsText.text = string.Format("{0}", greenWins);
-        Debug.Log(redWinsText);
-        Debug.Log(greenWinsText);
     }
 
     void SpawnWeaponDrop()
