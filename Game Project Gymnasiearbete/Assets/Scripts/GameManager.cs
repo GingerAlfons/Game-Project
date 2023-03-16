@@ -27,6 +27,10 @@ public class GameManager : MonoBehaviour
     private TextMeshProUGUI greenWinsText;
     [SerializeField]
     private GameObject winScreen;
+    [SerializeField]
+    private TextMeshProUGUI redFinalText;
+    [SerializeField]
+    private TextMeshProUGUI greenFinalText;
 
     private void Awake()
     {
@@ -38,8 +42,11 @@ public class GameManager : MonoBehaviour
             Instance.timer = timer;
             Instance.redWinsText = redWinsText;
             Instance.greenWinsText = greenWinsText;
+            Instance.greenFinalText = greenFinalText;
+            Instance.redFinalText = redFinalText;
             Instance.winScreen = winScreen;
             Instance.ScoreText();
+            Instance.FinalScore();
             Destroy(gameObject);
             return;
         }
@@ -105,6 +112,12 @@ public class GameManager : MonoBehaviour
         greenWinsText.text = string.Format("{0}", greenWins);
     }
 
+    private void FinalScore()
+    {
+        redFinalText.text = string.Format("{0}", redWins);
+        greenFinalText.text = string.Format("{0}", greenWins);
+    }
+
     void SpawnWeaponDrop()
     {
         //Ger spawn timern av objektet ett random värde mellan 5 - 10 sekunder
@@ -125,9 +138,10 @@ public class GameManager : MonoBehaviour
             greenWins++;
             if (greenWins == 3)
             {
+                //Laddar winscreen
+                Time.timeScale = 0f;
                 winScreen.SetActive(true);
-                ScoreText();
-                //Laddar en Win Screen med ett meddelande att "Green Wins!"
+                FinalScore();              
             }
             else
             {
@@ -139,9 +153,10 @@ public class GameManager : MonoBehaviour
             redWins++;
             if (redWins == 3)
             {
+                //Laddar winscreen
+                Time.timeScale = 0f;
                 winScreen.SetActive(true);
-                ScoreText();
-                //Laddar en Win Screen med ett meddelande att "Red Wins!"
+                FinalScore();
             }
             else
             {

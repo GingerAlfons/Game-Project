@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Sound
 {
+    //alla variabler som sound behöver
     public AudioClip clip;
     public string name;
     [Range(0f, 1f)]

@@ -30,6 +30,7 @@ public class menu : MonoBehaviour
         Time.timeScale = 1f;
         GameIsPaused = false;
     }
+    //sätter på pauseUI och stannar tiden
     public void Pause()
     {
         PauseMenuUI.SetActive(true);
@@ -60,5 +61,15 @@ public class menu : MonoBehaviour
     public void quit()
     {
         Application.Quit();
+    }
+    //sätter på tiden och sätter antal wins till 0 samt laddar om scenen
+    public void PlayAgain()
+    {
+        Time.timeScale = 1f;
+        GameObject gameManager = GameObject.Find("GameManager");
+        GameManager wins = gameManager.GetComponent<GameManager>();
+        wins.redWins = 0;
+        wins.greenWins = 0;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
