@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
     private TextMeshProUGUI redWinsText;
     [SerializeField]
     private TextMeshProUGUI greenWinsText;
+    [SerializeField]
+    private GameObject winScreen;
 
     private void Awake()
     {
@@ -36,6 +38,7 @@ public class GameManager : MonoBehaviour
             Instance.timer = timer;
             Instance.redWinsText = redWinsText;
             Instance.greenWinsText = greenWinsText;
+            Instance.winScreen = winScreen;
             Instance.ScoreText();
             Destroy(gameObject);
             return;
@@ -122,6 +125,8 @@ public class GameManager : MonoBehaviour
             greenWins++;
             if (greenWins == 3)
             {
+                winScreen.SetActive(true);
+                ScoreText();
                 //Laddar en Win Screen med ett meddelande att "Green Wins!"
             }
             else
@@ -134,6 +139,8 @@ public class GameManager : MonoBehaviour
             redWins++;
             if (redWins == 3)
             {
+                winScreen.SetActive(true);
+                ScoreText();
                 //Laddar en Win Screen med ett meddelande att "Red Wins!"
             }
             else
