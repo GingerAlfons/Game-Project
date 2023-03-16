@@ -124,7 +124,7 @@ public class GameManager : MonoBehaviour
         spawnTimer = Random.Range(5, 10);
         WeaponDrop clone = Instantiate(weaponDrop, Camera.main.transform.position + new Vector3(Random.Range(-10, 10), 15, 10), Quaternion.identity);
         clone.weaponValue = weaponLibrary[Random.Range(0, weaponLibrary.Length)];
-        Debug.Log("Objekt spawnas! " + "Tid till nästa objekt " + spawnTimer);
+        //Debug.Log("Objekt spawnas! " + "Tid till nästa objekt " + spawnTimer);
     }
 
     public void EndGame(GameObject targetedObject)

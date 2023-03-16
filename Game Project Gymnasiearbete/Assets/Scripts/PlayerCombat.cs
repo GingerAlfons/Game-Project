@@ -149,6 +149,8 @@ public class PlayerCombat : MonoBehaviour
             WeaponDrop wp = cda[i].GetComponent<WeaponDrop>();
             if (wp)
             {
+                //Återställer vapenanimationen
+                weaponAnimator.ResetTrigger("holding" + activeWeapon.name);
                 //Sätter spelarens aktiva vapen till vapnet på objektet
                 activeWeapon = wp.weaponValue;
                 //Raderar WeaponDrop objektet
@@ -176,6 +178,7 @@ public class PlayerCombat : MonoBehaviour
         {
             FindObjectOfType<AudioManager>().Play("Pickup");
             weaponAnimator.SetTrigger("holding" + activeWeapon.name);
+            Debug.Log("holding" + activeWeapon.name);
         }
     }
 

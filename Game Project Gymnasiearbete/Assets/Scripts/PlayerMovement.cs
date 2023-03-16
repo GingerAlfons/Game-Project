@@ -9,16 +9,16 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     public SpriteRenderer sr;
     public bool grounded; //Sann om spelaren är i kontakt med marken
-    public bool ducking; //Sann om spelaren duckar
+    public bool wantSlide; //Sann om spelaren tryckt ned slide-knappen
     public bool sliding; //Sann om spelaren glider
-    public bool jumping;
+    public bool jumping; //Sann om spelaren hoppar
 
     //Värden för rörelse-variabler
     [Header("Movement")]
     public KeyCode JumpButton;
     public KeyCode LeftButton;
     public KeyCode RightButton;
-    public KeyCode DuckButton;
+    public KeyCode SlideButton;
     float horizontalInput = 0f;
     public float accForce = 0f;
     public float maxSpeed = 0f;
@@ -32,11 +32,11 @@ public class PlayerMovement : MonoBehaviour
     public Vector3 groundBoxOffset = new Vector3(0f, 0f, 0f);
 
     //Värden för duck-variabler
-    [Header("Duck & Slide")]
+    [Header("Slide")]
     public Vector2 ccDefaultSize = new Vector2(1f, 1f);
     public Vector2 ccDefaultOffset = new Vector3(0f, 0f);
-    public Vector2 ccDuckSize = new Vector2(1f, 1f);
-    public Vector2 ccDuckOffset = new Vector3(0f, 0f);
+    public Vector2 ccSlideSize = new Vector2(1f, 1f);
+    public Vector2 ccSlideOffset = new Vector3(0f, 0f);
     public float slideForce = 10f;
     public float airSlideForce = 10f;
     public float slideCD = 0.5f;
@@ -52,12 +52,12 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetKey(RightButton))
             {
                 horizontalInput = 1f;
-                sr.flipX = false;
+                sr.flipX = false; //Vänder spriten
             }
             else if (Input.GetKey(LeftButton))
             {
                 horizontalInput = -1f;
-                sr.flipX = true;
+                sr.flipX = true; //Vänder spriten
             }
             else
             {
@@ -76,18 +76,13 @@ public class PlayerMovement : MonoBehaviour
                 Jump();
             }
 
-            //Kollar om duck-knappen har blivit nedtryckt samt att höger- eller vänster-knapp inte är nedtryckt
-            if (ducking && horizontalInput == 0)
-            {
-                Duck(cc);
-            }
             //Kollar om duck-knappen har blivit nedtryckt, att spelaren är på marken samt att den inte redan glider
-            else if (ducking && grounded && !sliding)
+            if (grounded && wantSlide && !sliding)
             {
                 StartCoroutine(Slide(cc));
             }
             //Kollar om duck-knappen har blivit nedtryckt samt att den inte redan glider
-            else if (ducking && !sliding)
+            else if (wantSlide && !sliding)
             {
                 AirSlide(cc);
             }
@@ -98,7 +93,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (GameManager.Instance.startTimer <= 0f)
         {
-            //Animation
+            //Animation för gå
             if (horizontalInput != 0)
             {
                 animator.SetBool("walking", true);
@@ -123,16 +118,10 @@ public class PlayerMovement : MonoBehaviour
                 jumping = true;
             }
 
-            //Kollar om spelaren trycker ned duck-knappen
-            if (Input.GetKeyDown(DuckButton))
+            //Kollar om spelaren trycker ned slide-knappen
+            if (Input.GetKeyDown(SlideButton))
             {
-                ducking = true;
-            }
-
-            //Kollar om spelaren släpper duck-knappen
-            if (Input.GetKeyUp(DuckButton))
-            {
-                Stand(cc);
+                wantSlide = true;
             }
         }
     }
@@ -146,24 +135,23 @@ public class PlayerMovement : MonoBehaviour
     public void Jump()
     {
         FindObjectOfType<AudioManager>().Play("Jump");
-        rb.velocity = new Vector3(rb.velocity.x, jumpStrength, 0f);
+        rb.velocity = new Vector3(rb.velocity.x, jumpStrength, 0f); //Sätter en hastighet riktad uppåt
         doubleJump--;
+        animator.SetTrigger("jump"); //Triggar hoppanimationen
         jumping = false;
     }
 
-    public void Duck(CapsuleCollider2D cc)
-    {
-        cc.size = ccDuckSize;
-        cc.offset = ccDuckOffset;
-    }
 
     public IEnumerator Slide(CapsuleCollider2D cc)
     {
+        wantSlide = false;
         sliding = true;
-        Duck(cc);
+        animator.SetTrigger("slide");
+        SlideHitBox(cc);
         Vector2 slideDir = new Vector2(horizontalInput * slideForce, 0f);
         rb.AddForce(slideDir, ForceMode2D.Impulse);
         yield return new WaitForSeconds(slideCD);
+        DefaultHitBox(cc);
         sliding = false;
     }
 
@@ -173,11 +161,16 @@ public class PlayerMovement : MonoBehaviour
         StartCoroutine(Slide(cc));
     }
 
-    public void Stand(CapsuleCollider2D capsuleCollider2D)
+    public void SlideHitBox(CapsuleCollider2D cc)
+    {
+        cc.size = ccSlideSize;
+        cc.offset = ccSlideOffset;
+    }
+
+    public void DefaultHitBox(CapsuleCollider2D capsuleCollider2D)
     {
         capsuleCollider2D.size = ccDefaultSize;
         capsuleCollider2D.offset = ccDefaultOffset;
-        ducking = false;
     }
 
     private void OnDrawGizmosSelected()
