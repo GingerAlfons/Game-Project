@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BackgroundMovement : MonoBehaviour
 {
-    public Transform camTf;
-    public float bgMoveMultiplier;
+    public Transform camTf; //Main-kamerans transform
+    public float bgMoveMultiplier; //Lägre närmare kameran
     
 
     // Update is called once per frame

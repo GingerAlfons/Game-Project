@@ -16,5 +16,6 @@ MonoBehaviour:
   weaponArtwork: {fileID: 21300000, guid: b9d19d61a814fd544b55056b0ddd9e50, type: 3}
   knockback: 2000
   attackCooldown: 2
+  attackDelay: 0.1
   attackBoxSize: {x: 1, y: 1}
   attackBoxOffset: {x: 1, y: 1, z: 0}

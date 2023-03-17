@@ -1,35 +1,41 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerCombat : MonoBehaviour
 {
+    //Spelarens komponenter
     public SpriteRenderer spriteRenderer;
-    public SpriteRenderer WeaponSpriteRenderer;
     public Animator animator;
+
+    //Vapnets komponenter
+    public SpriteRenderer WeaponSpriteRenderer;
     public Animator weaponAnimator;
 
+    //Liv-variabler
     [SerializeField] int maxHealth = 100;
     [SerializeField] int health;
+    public Healthbar healthbar;
 
+    //Kamera-skada variabler
     [SerializeField] float damageInterval = 1f;
     float dmgTimer;
     [SerializeField] int damageAmount = 5;
 
-    public KeyCode AttackButton;
-    public KeyCode LeftButton;
-    public KeyCode RightButton;
-    public KeyCode InteractButton;
-    public Vector2 attackBoxSize = new Vector2(2f, 1f);
-    public Vector3 attackBoxOffset = new Vector3(0f, 1f, 0f);
-    bool isAttacking = false;
+    //Attack-variabler
+    [SerializeField] private KeyCode AttackButton;
+    [SerializeField] private KeyCode LeftButton;
+    [SerializeField] private KeyCode RightButton;
+    [SerializeField] private KeyCode InteractButton;
+    [SerializeField] private Vector2 attackBoxSize = new Vector2();
+    [SerializeField] private Vector3 attackBoxOffset = new Vector3();
+    private bool isAttacking = false;
 
+    //Vapen-variabler
     public Weapon activeWeapon;
     public Vector2 interactBox = new Vector2(2f,2f);
 
-    public Healthbar healthbar;
-
     [SerializeField] public LayerMask player;
+
 
 
     // Start is called before the first frame update
@@ -37,7 +43,6 @@ public class PlayerCombat : MonoBehaviour
     {
         health = maxHealth;
         healthbar.SetMaxHealth(maxHealth);
-        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -106,12 +111,12 @@ public class PlayerCombat : MonoBehaviour
     IEnumerator Attack()
     {
         isAttacking = true;
-        yield return new WaitForSeconds(0.1f);
-
-        AttackBox();
-
         //Triggar slåanimation
         TriggerHitAnimation();
+
+        yield return new WaitForSeconds(activeWeapon.attackDelay);
+
+        AttackBox();
 
         yield return new WaitForSeconds(activeWeapon.attackCooldown);
         isAttacking = false;
@@ -133,8 +138,6 @@ public class PlayerCombat : MonoBehaviour
             PlayerCombat pc = cda[i].GetComponent<PlayerCombat>();
             if (pc)
             {
-                Debug.Log(cda[i].gameObject.name);
-
                 //Targeted Player, Weapon
                 Knockback(cda[i].gameObject, activeWeapon.knockback); 
             }
@@ -165,7 +168,6 @@ public class PlayerCombat : MonoBehaviour
         Rigidbody2D rb = enemy.GetComponent<Rigidbody2D>();
         
         Vector2 angle = new Vector2(enemy.transform.position.x - transform.position.x, enemy.transform.position.y - transform.position.y).normalized;
-        Debug.Log(angle.x);
         FindObjectOfType<AudioManager>().Play("Hit");
         rb.AddForce(angle * knockbackForce, ForceMode2D.Force);
     }
@@ -178,7 +180,6 @@ public class PlayerCombat : MonoBehaviour
         {
             FindObjectOfType<AudioManager>().Play("Pickup");
             weaponAnimator.SetTrigger("holding" + activeWeapon.name);
-            Debug.Log("holding" + activeWeapon.name);
         }
     }
 
